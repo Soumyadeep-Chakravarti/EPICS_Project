@@ -5,6 +5,10 @@ This module handles dataset splitting and feature scaling
 to prepare data for machine learning models.
 """
 
+from typing import Tuple
+
+import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
@@ -19,7 +23,11 @@ class Preprocessor:
         Splits dataset into train/test sets and applies standard scaling.
     """
 
-    def split_and_scale(self, X, y):
+    def split_and_scale(
+        self,
+        X: pd.DataFrame,
+        y: pd.Series,
+    ) -> Tuple[np.ndarray, np.ndarray, pd.Series, pd.Series]:
         """
         Split dataset and apply standard scaling.
 

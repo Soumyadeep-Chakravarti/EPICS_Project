@@ -5,6 +5,8 @@ This module provides functionality to load and structure
 the dataset into feature and target components.
 """
 
+from typing import Tuple
+
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 
@@ -19,7 +21,7 @@ class DataLoader:
         Loads dataset and returns features and labels.
     """
 
-    def load_data(self):
+    def load_data(self) -> Tuple[pd.DataFrame, pd.Series]:
         """
         Load the breast cancer dataset.
 

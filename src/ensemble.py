@@ -5,6 +5,9 @@ This module provides functionality to combine multiple
 machine learning models into an ensemble model.
 """
 
+from typing import Dict
+
+from sklearn.base import BaseEstimator
 from sklearn.ensemble import VotingClassifier
 
 
@@ -18,7 +21,10 @@ class EnsembleBuilder:
         Combines models into a voting classifier.
     """
 
-    def build(self, models):
+    def build(
+        self,
+        models: Dict[str, BaseEstimator],
+    ) -> VotingClassifier:
         """
         Build ensemble model using voting classifier.
 
@@ -36,7 +42,7 @@ class EnsembleBuilder:
 
         ensemble = VotingClassifier(
             estimators=estimators,
-            voting="hard",
+            voting="soft",
         )
 
         return ensemble

@@ -5,6 +5,9 @@ This module defines and provides machine learning models
 used for classification tasks.
 """
 
+from typing import Dict
+
+from sklearn.base import BaseEstimator
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -21,7 +24,7 @@ class ModelFactory:
         Returns dictionary of initialized models.
     """
 
-    def get_models(self):
+    def get_models(self) -> Dict[str, BaseEstimator]:
         """
         Get all machine learning models.
 

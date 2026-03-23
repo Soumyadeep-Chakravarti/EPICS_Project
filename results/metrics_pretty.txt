@@ -17,14 +17,14 @@ Recall: 1.0000
 F1 Score: 0.9861
 
 Random Forest
-Accuracy: 0.9561
-Precision: 0.9583
-Recall: 0.9718
-F1 Score: 0.9650
+Accuracy: 0.9649
+Precision: 0.9589
+Recall: 0.9859
+F1 Score: 0.9722
 
 Ensemble
-Accuracy: 0.9737
-Precision: 0.9722
+Accuracy: 0.9649
+Precision: 0.9589
 Recall: 0.9859
-F1 Score: 0.9790
+F1 Score: 0.9722
 
