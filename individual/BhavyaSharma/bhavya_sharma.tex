@@ -1,0 +1,295 @@
+\documentclass[12pt]{article}
+
+% --- Packages ---
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xurl}
+\usepackage{hyperref}
+
+% --- Setup ---
+\setstretch{1.1}
+\pagestyle{plain}
+\sloppy
+
+% Format Section Headings
+\titleformat{\section}{\fontsize{14}{16}\bfseries\uppercase}{\thesection.}{1em}{}
+\titleformat{\subsection}{\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+%==================== TITLE PAGE ====================%
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    {\fontsize{16}{20} \selectfont \textbf{Explainable Breast Cancer Detection using Ensemble Learning} \par}
+    
+    \vspace{1cm}
+    
+    {\fontsize{14}{18} \selectfont \textbf{Individual Contribution Report} \par}
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{EPICS Phase -- II} \par}
+    
+    \vspace{1.5cm}
+    
+    {\large \textit{Submitted by} \par}
+    
+    \vspace{0.5cm}
+    
+    {\Large \textbf{Bhavya Sharma} \par}
+    {\large Register Number: 23BEC10069 \par}
+    
+    \vspace{1.5cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{../Assets/VIT_LOGO.png}
+    \end{figure}
+    
+    \vspace{1cm}
+    
+    {\large \textit{in partial fulfillment of the requirements for the degree of} \par}
+    
+    \vspace{0.3cm}
+    
+    {\large \textbf{Bachelor of Technology} \par}
+    {\large Electronics and Communication Engineering \par}
+    
+    \vfill
+    
+    \textbf{VIT Bhopal University} \\
+    \textbf{Kothrikalan, Sehore} \\
+    \textbf{Madhya Pradesh} \\
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{March 2026}}
+    
+\end{titlepage}
+
+%==================== ABSTRACT ====================%
+\newpage
+\pagenumbering{roman}
+\begin{center}
+    \textbf{\Large Abstract}
+\end{center}
+
+\noindent Breast cancer continues to be a major health concern for women globally, and catching it early can make a huge difference in patient outcomes. For this project, our team set out to build a machine learning system that not only detects breast cancer accurately but also explains its reasoning -- something we felt was really important for medical applications.
+
+\vspace{0.5cm}
+\noindent We tested out several different ML models -- Logistic Regression, Decision Trees, SVMs, and Random Forest -- to see which ones worked best for classifying tumors as either benign or malignant. We also combined them using a soft voting ensemble to get more reliable predictions overall.
+
+\vspace{0.5cm}
+\noindent What I think sets our project apart is that we didn't just chase high accuracy numbers. We made sure the system could tell doctors \textit{why} it made a particular prediction, through confidence scores and feature importance analysis. In the end, Logistic Regression and SVM both hit 98.25\% accuracy, with ROC-AUC scores above 0.99 -- results we were pretty happy with.
+
+\vspace{0.5cm}
+\noindent \textbf{Keywords:} Breast Cancer Detection, Machine Learning, Ensemble Learning, Explainable AI, Classification, Healthcare Analytics
+
+%==================== TABLE OF CONTENTS ====================%
+\newpage
+\tableofcontents
+
+%==================== MY CONTRIBUTION ====================%
+\newpage
+\pagenumbering{arabic}
+\section{MY CONTRIBUTION}
+
+\subsection{Overview}
+For this EPICS project, my main job was to find the right dataset and really dig into what all those medical numbers actually mean. Honestly, before I started, I didn't know much about cytology or how doctors analyze cell samples -- but I learned a lot along the way. Getting this foundation right was super important because if we didn't understand our data, the whole ML pipeline would be built on shaky ground.
+
+\subsection{Dataset Acquisition}
+
+Finding a good dataset took more time than I expected. I looked at a bunch of different breast cancer datasets, but many had issues -- missing values, weird formatting, or unclear feature descriptions. Eventually, I landed on the \textbf{Wisconsin Diagnostic Breast Cancer (WDBC) dataset} from UCI's ML Repository. It's been used in tons of research papers, so I figured it was a safe bet.
+
+Here's what I actually did during this phase:
+\begin{itemize}
+    \item Spent time comparing different breast cancer datasets (there are more out there than I realized!)
+    \item Checked each one for missing data, proper labeling, and whether it would work for our models
+    \item Downloaded WDBC and ran some basic sanity checks to make sure nothing was corrupted
+    \item Wrote up where the data came from and its license -- boring but necessary for academic work
+\end{itemize}
+
+\subsection{Understanding Medical Attributes}
+
+This was probably the most interesting part of my work. The WDBC dataset has 30 features extracted from cell images, and at first, I had no idea what half of them meant. I spent a good amount of time reading about fine needle aspirates (FNA) and how pathologists actually look at cell samples. Here's what I figured out:
+
+\subsubsection{Geometric Features}
+These are basically measurements of cell nucleus size:
+\begin{itemize}
+    \item \textbf{Radius}: How far, on average, from the center to the edge
+    \item \textbf{Perimeter}: The distance around the whole boundary
+    \item \textbf{Area}: Pretty self-explanatory -- how much space the nucleus takes up
+\end{itemize}
+
+The cool thing I learned is that cancer cells tend to have bigger, more irregular nuclei. So these size measurements actually tell us something medically meaningful.
+
+\subsubsection{Texture Features}
+These describe how ``bumpy'' or irregular the cells look:
+\begin{itemize}
+    \item \textbf{Smoothness}: How much the radius varies around the cell
+    \item \textbf{Compactness}: Basically $\frac{perimeter^2}{area} - 1$ -- tells you if the shape is compact or spread out
+    \item \textbf{Concavity}: How much the boundary curves inward
+\end{itemize}
+
+\subsubsection{Shape Features}
+These capture the overall shape characteristics:
+\begin{itemize}
+    \item \textbf{Concave Points}: How many ``dips'' are in the boundary
+    \item \textbf{Symmetry}: Whether the nucleus looks the same on both sides
+    \item \textbf{Fractal Dimension}: This one was tricky -- it measures how complex the boundary is
+\end{itemize}
+
+\subsection{Dataset Characterization}
+
+I put together a summary of the dataset so everyone on the team would be on the same page:
+
+\begin{table}[H]
+\centering
+\caption{WDBC Dataset Summary Prepared}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Attribute} & \textbf{Value} \\ \hline
+Total Instances & 569 \\ \hline
+Features & 30 (numeric) \\ \hline
+Benign Cases & 357 (62.7\%) \\ \hline
+Malignant Cases & 212 (37.3\%) \\ \hline
+Missing Values & None \\ \hline
+Feature Categories & Mean, SE, Worst (10 each) \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Initial Data Cleaning and Organization}
+
+Before handing off the data to the rest of the team, I did some basic cleanup work:
+\begin{itemize}
+    \item Double-checked there were no missing values (there weren't -- WDBC is pretty clean)
+    \item Made sure all the columns had the right data types (floats for features, labels for diagnosis)
+    \item Organized everything in a way that would be easy for Suryanshi to preprocess
+    \item Wrote up documentation explaining what each column meant and typical value ranges
+\end{itemize}
+
+\subsection{Relationship Analysis}
+
+I also looked at how different features related to each other, which turned up some interesting patterns:
+\begin{itemize}
+    \item Radius, perimeter, and area are super correlated (which makes sense mathematically)
+    \item Some features are way better at separating benign from malignant than others
+    \item I flagged the best discriminating features so Ujjwal and Medhansh could keep them in mind
+\end{itemize}
+
+\subsection{Documentation and Knowledge Transfer}
+
+Since I was the one who really dug into the medical side of things, I made sure to share what I learned:
+\begin{itemize}
+    \item Created a reference doc explaining each feature in plain English
+    \item Put together some notes on breast cancer cytology basics
+    \item Had a couple meetings with the team to walk through the feature meanings
+\end{itemize}
+
+%==================== PROJECT OVERVIEW ====================%
+\newpage
+\section{PROJECT OVERVIEW}
+
+\subsection{Problem Statement}
+We wanted to build a system that could tell benign tumors from malignant ones, but also explain why it made each decision. Just getting a ``yes'' or ``no'' from a model isn't enough when you're dealing with something as serious as cancer -- doctors need to understand the reasoning.
+
+\subsection{System Architecture}
+We broke the project into four main pieces:
+\begin{enumerate}
+    \item \textbf{Data Layer}: Loading and cleaning the data (this is where my work fit in)
+    \item \textbf{Model Layer}: Training different classification algorithms
+    \item \textbf{Ensemble Layer}: Combining models using soft voting
+    \item \textbf{Output Layer}: Generating metrics, plots, and explanations
+\end{enumerate}
+
+\subsection{Results Achieved}
+I'm pretty proud of what we accomplished:
+\begin{itemize}
+    \item Logistic Regression and SVM both hit 98.25\% accuracy
+    \item ROC-AUC scores were above 0.99 for the best models
+    \item We got 98.61\% recall, which means we barely missed any actual cancer cases
+    \item Cross-validation showed the results weren't just lucky splits
+\end{itemize}
+
+%==================== TEAM CONTRIBUTIONS ====================%
+\newpage
+\section{TEAM CONTRIBUTIONS}
+
+\subsection{Team Members and Their Roles}
+
+\begin{itemize}
+    \item \textbf{Bhavya Sharma (Me)}: Finding the dataset and figuring out what all the medical terms mean
+    \item \textbf{Suryanshi Ranawat}: Preprocessing the data and doing exploratory analysis
+    \item \textbf{Ujjwal Mishra}: Writing and tuning the ML algorithms
+    \item \textbf{Medhansh Singh Kushwaha}: Building the ensemble voting system
+    \item \textbf{Soumyadeep Chakravarti}: Keeping us organized, checking everything worked, and writing the final report
+\end{itemize}
+
+\subsection{Collaboration}
+We had regular meetings (mostly online, sometimes in the library) to check in on progress. My dataset work fed directly into what Suryanshi and the others did, so it was important to stay coordinated. When someone had questions about what a feature meant or why values looked a certain way, they'd usually come to me.
+
+%==================== LEARNING OUTCOMES ====================%
+\newpage
+\section{LEARNING OUTCOMES}
+
+Through this project, I picked up quite a few new skills:
+
+\begin{enumerate}
+    \item \textbf{Medical Data Understanding}: I now actually know what cytology is and how doctors interpret cell features. Before this, I'd never even heard of fine needle aspirates.
+    
+    \item \textbf{Dataset Evaluation}: I learned to look at datasets critically -- just because something exists doesn't mean it's good for your problem.
+    
+    \item \textbf{Research Skills}: Reading medical papers and technical docs was challenging at first, but I got better at extracting what I needed.
+    
+    \item \textbf{Teamwork}: Working with people who had different technical strengths taught me how to communicate across specialties.
+    
+    \item \textbf{Documentation}: Writing things down clearly so others could use my work was harder than I expected, but valuable.
+\end{enumerate}
+
+%==================== CONCLUSION ====================%
+\newpage
+\section{CONCLUSION}
+
+Looking back, my part of this project -- finding the dataset and understanding what all those numbers actually mean -- turned out to be more important than I initially thought. Without knowing what ``concave points'' or ``fractal dimension'' meant in a medical context, we would have been building models blindly.
+
+The WDBC dataset was a solid choice. It's clean, well-documented, and widely used in research, which gave us confidence that our results were comparable to other work in this area. Understanding which features really matter (like worst area and concave points) helped the team focus on what was actually predictive.
+
+This EPICS project was my first real exposure to applying engineering to healthcare problems. It's one thing to learn about ML in class, but seeing it applied to something like cancer detection made the stakes feel more real. I'm glad I took the time to understand the medical side -- it made the whole project more meaningful.
+
+%==================== REFERENCES ====================%
+\newpage
+\section{REFERENCES}
+
+\begin{thebibliography}{99}
+
+\bibitem{wolberg1995}
+W. H. Wolberg, W. N. Street, and O. L. Mangasarian, ``Breast Cancer Wisconsin (Diagnostic) Dataset,'' UCI Machine Learning Repository, 1995. [Online]. Available: \url{https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)}
+
+\bibitem{who2023}
+World Health Organization, ``Breast Cancer,'' WHO Fact Sheets, 2023. [Online]. Available: \url{https://www.who.int/news-room/fact-sheets/detail/breast-cancer}
+
+\bibitem{acs2023}
+American Cancer Society, ``Breast Cancer,'' 2023. [Online]. Available: \url{https://www.cancer.org/cancer/breast-cancer.html}
+
+\bibitem{uci2023}
+UCI Machine Learning Repository, 2023. [Online]. Available: \url{https://archive.ics.uci.edu/}
+
+\bibitem{github2026}
+S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' GitHub, 2026. [Online]. Available: \url{https://github.com/Soumyadeep-Chakravarti/EPICS_Project}
+
+\end{thebibliography}
+
+\end{document}

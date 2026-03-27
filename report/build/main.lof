@@ -1,11 +1,11 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces System Architecture Diagram}}{5}{figure.caption.4}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Feature Correlation Heatmap (Top 15 Features)}}{6}{figure.caption.6}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Cross-Validation Accuracy with Error Bars}}{11}{figure.caption.10}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Cross-Validation Accuracy with Error Bars}}{12}{figure.caption.10}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Confusion Matrix of Ensemble Model}}{12}{figure.caption.11}%
 \contentsline {figure}{\numberline {5}{\ignorespaces ROC Curves for All Models}}{13}{figure.caption.12}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Precision-Recall Curves}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Precision-Recall Curves}}{14}{figure.caption.13}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Learning Curves Showing Model Convergence}}{14}{figure.caption.14}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Top 10 Most Important Features}}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Feature Distributions by Class}}{15}{figure.caption.16}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Top 10 Most Important Features}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Feature Distributions by Class}}{16}{figure.caption.16}%
 \contentsline {figure}{\numberline {10}{\ignorespaces Error Analysis: Confidence Distribution and Misclassified Samples}}{16}{figure.caption.17}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Comprehensive Model Performance Comparison}}{16}{figure.caption.18}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Comprehensive Model Performance Comparison}}{17}{figure.caption.18}%

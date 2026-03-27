@@ -1,0 +1,327 @@
+\documentclass[12pt]{article}
+
+% --- Packages ---
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xurl}
+\usepackage{hyperref}
+
+% --- Setup ---
+\setstretch{1.1}
+\pagestyle{plain}
+\sloppy
+
+% Format Section Headings
+\titleformat{\section}{\fontsize{14}{16}\bfseries\uppercase}{\thesection.}{1em}{}
+\titleformat{\subsection}{\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+%==================== TITLE PAGE ====================%
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    {\fontsize{16}{20} \selectfont \textbf{Explainable Breast Cancer Detection using Ensemble Learning} \par}
+    
+    \vspace{1cm}
+    
+    {\fontsize{14}{18} \selectfont \textbf{Individual Contribution Report} \par}
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{EPICS Phase -- II} \par}
+    
+    \vspace{1.5cm}
+    
+    {\large \textit{Submitted by} \par}
+    
+    \vspace{0.5cm}
+    
+    {\Large \textbf{Suryanshi Ranawat} \par}
+    {\large Register Number: 23BCE11634 \par}
+    
+    \vspace{1.5cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{../Assets/VIT_LOGO.png}
+    \end{figure}
+    
+    \vspace{1cm}
+    
+    {\large \textit{in partial fulfillment of the requirements for the degree of} \par}
+    
+    \vspace{0.3cm}
+    
+    {\large \textbf{Bachelor of Technology} \par}
+    {\large Computer Science and Engineering \par}
+    
+    \vfill
+    
+    \textbf{VIT Bhopal University} \\
+    \textbf{Kothrikalan, Sehore} \\
+    \textbf{Madhya Pradesh} \\
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{March 2026}}
+    
+\end{titlepage}
+
+%==================== ABSTRACT ====================%
+\newpage
+\pagenumbering{roman}
+\begin{center}
+    \textbf{\Large Abstract}
+\end{center}
+
+\noindent Breast cancer affects millions of women globally, and catching it early genuinely saves lives. Our team built a machine learning system that tries to help with detection while also being transparent about how it makes decisions -- because in medicine, a black box prediction isn't helpful.
+
+\vspace{0.5cm}
+\noindent We experimented with several classification algorithms -- Logistic Regression, Decision Trees, SVM, and Random Forest -- and combined them using soft voting. The idea was that multiple models working together would be more reliable than any single one.
+
+\vspace{0.5cm}
+\noindent One thing we really focused on was making the system explainable. It doesn't just say ``malignant'' or ``benign'' -- it provides confidence scores and shows which features influenced the decision. Our best models achieved 98.25\% accuracy with ROC-AUC above 0.99.
+
+\vspace{0.5cm}
+\noindent \textbf{Keywords:} Breast Cancer Detection, Machine Learning, Ensemble Learning, Explainable AI, Data Preprocessing, Exploratory Data Analysis
+
+%==================== TABLE OF CONTENTS ====================%
+\newpage
+\tableofcontents
+
+%==================== MY CONTRIBUTION ====================%
+\newpage
+\pagenumbering{arabic}
+\section{MY CONTRIBUTION}
+
+\subsection{Overview}
+My main job in this project was \textbf{data preprocessing and exploratory data analysis (EDA)}. Basically, I took the raw dataset that Bhavya found and got it ready for the ML models. This might sound straightforward, but good preprocessing can make or break a project -- garbage in, garbage out, as they say.
+
+\subsection{Data Preprocessing}
+
+Preprocessing is one of those things that doesn't sound glamorous but is absolutely critical. Here's what I focused on:
+
+\subsubsection{Handling Missing Values}
+First thing I did was check for missing data. You'd be surprised how many datasets have gaps:
+\begin{itemize}
+    \item Went through all 30 features systematically
+    \item Checked every single row (569 of them)
+    \item Good news: WDBC is squeaky clean -- not a single missing value
+    \item Documented this so the team knew we didn't need imputation
+\end{itemize}
+
+\subsubsection{Data Normalization and Scaling}
+This was probably the most important preprocessing step. I used standard scaling (Z-score normalization):
+
+\begin{equation}
+z_i = \frac{x_i - \mu}{\sigma}
+\end{equation}
+
+where $\mu$ is the mean and $\sigma$ is the standard deviation.
+
+Here's what I actually did:
+\begin{itemize}
+    \item Applied StandardScaler from scikit-learn to all features
+    \item Made sure to fit the scaler \textit{only} on training data (this prevents data leakage!)
+    \item Applied the same transformation to test data
+    \item Verified the scaled features had mean~0 and std~1
+\end{itemize}
+
+\subsubsection{Train-Test Split}
+I set up the train-test split with stratification:
+\begin{itemize}
+    \item Used an 80/20 split (455 training, 114 test samples)
+    \item Stratified by diagnosis to keep class ratios the same in both sets
+    \item Set a random seed so results are reproducible
+\end{itemize}
+
+Stratification ensures:
+\begin{equation}
+\frac{|y_{train}^{(c)}|}{|\mathcal{D}_{train}|} = \frac{|y_{test}^{(c)}|}{|\mathcal{D}_{test}|} = \frac{|y^{(c)}|}{|\mathcal{D}|}
+\end{equation}
+
+\subsection{Exploratory Data Analysis}
+
+EDA was actually the fun part -- getting to know the dataset before building models.
+
+\subsubsection{Statistical Analysis}
+I ran a bunch of statistics on all the features:
+\begin{itemize}
+    \item Calculated basics: mean, median, std, min, max, quartiles
+    \item Looked at how spread out the values were for each feature
+    \item Flagged potential outliers using IQR (some were pretty extreme)
+    \item Compared statistics between benign and malignant groups -- this was really revealing
+\end{itemize}
+
+\subsubsection{Correlation Analysis}
+I built correlation matrices to understand how features related to each other:
+\begin{itemize}
+    \item Made heatmaps for all 30 features (pretty busy-looking, honestly)
+    \item Found that radius, perimeter, and area are super correlated (makes sense mathematically)
+    \item Noted multicollinearity issues that might affect linear models
+    \item Narrowed down to top 15 features for a cleaner visualization
+\end{itemize}
+
+The high correlations between geometric features weren't surprising -- area is basically radius squared, after all.
+
+\subsubsection{Feature Distribution Visualization}
+I created visualizations to see how benign and malignant cases differ:
+\begin{itemize}
+    \item Histograms comparing the two classes -- some features showed really clear separation
+    \item Box plots to see spread and outliers
+    \item Violin plots for more detailed distribution shapes
+    \item Identified which features would likely be most predictive
+\end{itemize}
+
+\subsubsection{Key Features Identification}
+From all this analysis, the most discriminating features seemed to be:
+\begin{enumerate}
+    \item \textbf{Worst Area}: Huge difference between benign and malignant
+    \item \textbf{Worst Concave Points}: Malignant tumors have more of these
+    \item \textbf{Worst Radius}: Malignant tumors tend to be bigger
+    \item \textbf{Mean Concave Points}: Consistently different between classes
+    \item \textbf{Worst Perimeter}: Related to tumor size
+\end{enumerate}
+
+\subsection{Visualization Development}
+
+I made several plots that ended up in our reports:
+
+\subsubsection{Correlation Heatmap}
+The heatmap showing correlations among the top 15 features was pretty informative. You could really see clusters of related features.
+
+\subsubsection{Feature Distribution Plots}
+I created side-by-side plots comparing benign and malignant distributions. For features like ``worst concave points,'' you can literally see the two classes barely overlap -- that's a good sign for classification.
+
+\subsubsection{Class Distribution Analysis}
+I also visualized the class balance:
+\begin{itemize}
+    \item Benign: 357 cases (62.7\%)
+    \item Malignant: 212 cases (37.3\%)
+\end{itemize}
+
+It's imbalanced, but not severely. This informed our decision to use stratification and to track metrics like recall that account for class imbalance.
+
+\subsection{Data Quality Assurance}
+
+Before declaring the data ``ready,'' I did some final checks:
+\begin{itemize}
+    \item Confirmed all columns had correct dtypes (no strings hiding in numeric columns)
+    \item Searched for duplicate rows (none found)
+    \item Sanity-checked feature ranges against what medical literature says is reasonable
+    \item Documented every preprocessing step so others could reproduce it
+\end{itemize}
+
+%==================== PROJECT OVERVIEW ====================%
+\newpage
+\section{PROJECT OVERVIEW}
+
+\subsection{Problem Statement}
+We wanted to build a system that could distinguish benign from malignant tumors, give confidence scores, and explain its reasoning. In medicine, just getting a ``yes'' or ``no'' isn't helpful -- doctors need to understand the why.
+
+\subsection{System Architecture}
+We organized the project into four layers:
+\begin{enumerate}
+    \item \textbf{Data Layer}: Loading and preprocessing (my domain)
+    \item \textbf{Model Layer}: The classification algorithms
+    \item \textbf{Ensemble Layer}: Soft voting combination
+    \item \textbf{Output Layer}: Metrics and visualizations
+\end{enumerate}
+
+\subsection{Results Achieved}
+We got some solid results:
+\begin{itemize}
+    \item LR and SVM both achieved 98.25\% accuracy
+    \item ROC-AUC above 0.99 for the best models
+    \item 98.61\% recall -- catching almost all the cancer cases
+    \item Cross-validation confirmed the results were robust
+\end{itemize}
+
+I like to think my preprocessing work contributed to these numbers -- clean, well-scaled data makes everything downstream work better.
+
+%==================== TEAM CONTRIBUTIONS ====================%
+\newpage
+\section{TEAM CONTRIBUTIONS}
+
+\subsection{Team Members and Their Roles}
+
+\begin{itemize}
+    \item \textbf{Bhavya Sharma}: Found the dataset and explained the medical terminology
+    \item \textbf{Suryanshi Ranawat (Me)}: Data preprocessing and exploratory analysis
+    \item \textbf{Ujjwal Mishra}: Implemented the ML algorithms
+    \item \textbf{Medhansh Singh Kushwaha}: Built the ensemble system
+    \item \textbf{Soumyadeep Chakravarti}: Coordinated everything and wrote the final report
+\end{itemize}
+
+\subsection{Collaboration}
+Everyone contributed their part, and my work was kind of the bridge between data acquisition and model training. After Bhavya got the dataset ready, I cleaned and analyzed it, then passed it to Ujjwal and Medhansh for the ML work. We'd check in regularly to make sure my outputs matched what they needed as inputs.
+
+%==================== LEARNING OUTCOMES ====================%
+\newpage
+\section{LEARNING OUTCOMES}
+
+Here's what I learned from working on this project:
+
+\begin{enumerate}
+    \item \textbf{Data Preprocessing}: I really understand normalization and train-test splitting now, including why data leakage is such a big deal
+    
+    \item \textbf{Exploratory Data Analysis}: I got much better at using statistics and visualizations to actually understand data before modeling
+    
+    \item \textbf{Python Libraries}: Got comfortable with pandas, numpy, matplotlib, seaborn, and scikit-learn's preprocessing modules
+    
+    \item \textbf{Feature Analysis}: Learned to identify which features are actually useful through correlation and distribution analysis
+    
+    \item \textbf{Data Quality}: Developed a systematic approach to checking data quality -- not just trusting that it's clean
+    
+    \item \textbf{Healthcare Data}: Gained appreciation for how careful you need to be with medical data -- preprocessing choices can affect real diagnostic outcomes
+\end{enumerate}
+
+%==================== CONCLUSION ====================%
+\newpage
+\section{CONCLUSION}
+
+My part of this project was all about getting the data ready -- preprocessing and exploratory analysis. It doesn't sound as exciting as building ML models, but honestly, it's where a lot of the real work happens. Badly prepared data would have torpedoed everything downstream.
+
+The EDA I did was genuinely useful. The visualizations showed which features had the clearest separation between classes, and understanding feature correlations helped avoid redundant information. The preprocessing pipeline I built followed best practices (fitting only on training data, stratified splits) to prevent the kinds of subtle bugs that can invalidate results.
+
+I'm happy with how the project turned out -- 98.25\% accuracy is solid, and I think my careful data preparation contributed to that. It was also interesting to work on something with real medical relevance rather than just toy datasets.
+
+This EPICS project taught me that data work is foundational. You can have the fanciest model architecture in the world, but if your data is messy or your preprocessing leaks information, none of it matters.
+
+%==================== REFERENCES ====================%
+\newpage
+\section{REFERENCES}
+
+\begin{thebibliography}{99}
+
+\bibitem{wolberg1995}
+W. H. Wolberg, W. N. Street, and O. L. Mangasarian, ``Breast Cancer Wisconsin (Diagnostic) Dataset,'' UCI Machine Learning Repository, 1995. [Online]. Available: \url{https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)}
+
+\bibitem{pedregosa2011}
+F. Pedregosa et al., ``Scikit-learn: Machine Learning in Python,'' \textit{JMLR}, vol. 12, pp. 2825--2830, 2011. [Online]. Available: \url{https://scikit-learn.org}
+
+\bibitem{pandas}
+Pandas, ``Python Data Analysis Library,'' 2023. [Online]. Available: \url{https://pandas.pydata.org}
+
+\bibitem{matplotlib}
+Matplotlib, ``Visualization with Python,'' 2023. [Online]. Available: \url{https://matplotlib.org}
+
+\bibitem{github2026}
+S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' GitHub, 2026. [Online]. Available: \url{https://github.com/Soumyadeep-Chakravarti/EPICS_Project}
+
+\end{thebibliography}
+
+\end{document}

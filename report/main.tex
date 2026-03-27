@@ -84,8 +84,8 @@
         1 & 23BCE11634 & Suryanshi Ranawat \\ \hline
         2 & 23BEC10069 & Bhavya Sharma \\ \hline
         3 & 23BEC10079 & Ujjwal Mishra \\ \hline
-        %4 & 23BCE11385 & Medhansh Singh Kushwaha\\\hline
-        4 & 23BAI11250 & Soumyadeep Chakravarti \\ \hline
+        4 & 23BCE11385 & Medhansh Singh Kushwaha\\\hline
+        5 & 23BAI11250 & Soumyadeep Chakravarti \\ \hline
     \end{tabular}
     
     \vspace{1.5cm}
@@ -125,7 +125,7 @@
 \end{center}
 \vspace{1cm}
 
-\noindent Certified that this project report titled \textbf{``Explainable Breast Cancer Detection using Ensemble Learning''} is the bonafide work of \textbf{``Suryanshi Ranawat (23BCE11634), Bhavya Sharma (23BEC10069), Ujjwal Mishra (23BEC10079),\commentout{ Medhansh Singh Kushwaha (23BCE11385),} Soumyadeep Chakravarti (23BAI11250)''} who carried out the project work under my supervision.
+\noindent Certified that this project report titled \textbf{``Explainable Breast Cancer Detection using Ensemble Learning''} is the bonafide work of \textbf{``Suryanshi Ranawat (23BCE11634), Bhavya Sharma (23BEC10069), Ujjwal Mishra (23BEC10079),Medhansh Singh Kushwaha (23BCE11385), Soumyadeep Chakravarti (23BAI11250)''} who carried out the project work under my supervision.
 
 \vspace{1cm}
 
@@ -157,7 +157,7 @@
 \null \hfill 23BCE11634 - Suryanshi Ranawat \\
 \null \hfill 23BEC10069 - Bhavya Sharma \\
 \null \hfill 23BEC10079 - Ujjwal Mishra \\
-%\null \hfill 23BCE11385 - Medhansh Singh Kushwaha\\
+\null \hfill 23BCE11385 - Medhansh Singh Kushwaha\\
 \null \hfill 23BAI11250 - Soumyadeep Chakravarti \\
 \null \hfill (also signed by all students)
 
@@ -167,16 +167,16 @@
     \textbf{\Large Acknowledgement}
 \end{center}
 
-\noindent We would like to express our sincere gratitude to our project supervisor for their continuous guidance, constructive feedback, and support throughout the development of this project. Their insights helped us refine both the technical implementation and the presentation of our work.
+\noindent We want to thank our project supervisor for all the guidance and feedback along the way. Their advice helped us improve both the technical side and how we presented our work.
 
 \vspace{0.5cm}
-\noindent We also thank the faculty members of VIT Bhopal University for providing the necessary academic environment and resources that enabled us to explore practical applications of machine learning in the healthcare domain.
+\noindent Thanks also to the faculty at VIT Bhopal University for giving us the resources and environment to work on applying machine learning to healthcare problems.
 
 \vspace{0.5cm}
-\noindent This project required coordinated effort across multiple components including data preprocessing, model development, evaluation, and visualization. We acknowledge the collaborative effort of all team members in ensuring the successful completion of the project within the given timeline.
+\noindent This project had a lot of moving parts---data preprocessing, building the models, testing everything, creating visualizations---and it really took all of us working together to get it done on time.
 
 \vspace{0.5cm}
-\noindent Finally, we are grateful for the availability of open-source tools and datasets, which made it possible to design and implement a complete end-to-end machine learning pipeline.
+\noindent We are also grateful for all the open-source tools and public datasets out there. Without them, putting together a complete machine learning pipeline would have been much harder.
 
 %==================== 5. ABSTRACT ====================%
 \newpage
@@ -184,15 +184,15 @@
     \textbf{\Large Abstract}
 \end{center}
 
-\noindent Breast cancer remains one of the leading causes of mortality among women worldwide, where early and accurate diagnosis plays a critical role in improving survival rates. In this work, we present an explainable machine learning system for breast cancer detection that combines multiple classical classification algorithms with ensemble learning techniques.
+\noindent Breast cancer is still one of the biggest health concerns for women around the world. Catching it early makes a huge difference in treatment outcomes, which is why we set out to build a machine learning system that not only detects breast cancer accurately but also explains its reasoning.
 
-\noindent The proposed system evaluates several supervised learning models, including Logistic Regression, Decision Tree, Support Vector Machine, and Random Forest, for the classification of tumors as benign or malignant. In addition to individual models, an ensemble approach is implemented to improve prediction robustness and generalization performance.
+\noindent We tested several well-known classification algorithms---Logistic Regression, Decision Tree, Support Vector Machine, and Random Forest---to see how well they could tell benign tumors apart from malignant ones. We also combined these models into an ensemble to get more reliable predictions overall.
 
-\noindent A key contribution of this work is the focus on interpretability alongside predictive accuracy. The system generates confidence scores for each prediction, providing a measure of reliability, while feature importance analysis identifies the most influential attributes contributing to classification outcomes. These capabilities are particularly important in healthcare applications, where transparency and trust are essential.
+\noindent What sets our system apart is that it does not just give you a yes or no answer. It tells you how confident it is in each prediction and shows which features mattered most in reaching that conclusion. In medical applications, this kind of transparency is really important because doctors need to understand and trust the tool they are using.
 
-\noindent Experimental results demonstrate that Logistic Regression and Support Vector Machine achieve the highest accuracy (98.25\%) among all models, with ROC-AUC scores exceeding 0.99. Cross-validation confirms robust generalization with standard deviations below 2.5\%. Visualizations including confusion matrices, ROC curves, feature importance plots, and learning curves enhance the interpretability of the system.
+\noindent Our results were encouraging: Logistic Regression and SVM both hit 98.25\% accuracy, with ROC-AUC scores above 0.99. When we ran cross-validation, the models held up well with standard deviations under 2.5\%. We also put together visualizations---confusion matrices, ROC curves, feature importance charts---to make the results easier to interpret.
 
-\noindent Overall, the proposed approach successfully balances accuracy, robustness, and explainability, making it a practical and reliable decision-support system for breast cancer diagnosis.
+\noindent All in all, we managed to build something that balances accuracy with explainability, which we think makes it genuinely useful as a decision-support tool for breast cancer screening.
 
 \vspace{0.5cm}
 \noindent \textbf{Keywords:} Breast Cancer Detection, Machine Learning, Ensemble Learning, Explainable AI, Classification, Healthcare Analytics
@@ -214,121 +214,121 @@
 
 \subsection{Background and Motivation}
 
-Breast cancer is one of the most commonly diagnosed cancers worldwide and remains a leading cause of mortality among women. According to the World Health Organization (WHO), breast cancer accounts for approximately 12.5\% of all new annual cancer cases globally, making it the most prevalent cancer worldwide \cite{who2023}. In 2020 alone, there were an estimated 2.3 million new cases and 685,000 deaths attributed to breast cancer.
+Breast cancer is one of the most common cancers in the world and remains a leading cause of death among women. The World Health Organization reports that it accounts for about 12.5\% of all new cancer cases each year, making it the most prevalent cancer globally \cite{who2023}. In 2020, there were roughly 2.3 million new cases and 685,000 deaths.
 
-Early detection plays a critical role in improving survival rates. Studies indicate that the five-year survival rate for localized breast cancer is approximately 99\%, while this rate drops to 86\% for regional spread and 29\% for distant metastasis \cite{acs2023}. This dramatic difference underscores the importance of accurate and timely diagnosis.
+The earlier you catch breast cancer, the better the chances of survival. If the cancer is still localized, the five-year survival rate sits around 99\%. Once it spreads regionally, that drops to 86\%, and for distant metastasis, it falls to just 29\% \cite{acs2023}. Those numbers really drive home why accurate, timely diagnosis matters so much.
 
-Traditional diagnostic approaches, such as mammography, ultrasound imaging, and fine needle aspiration biopsy, rely heavily on expert interpretation. However, these methods face several challenges:
+Doctors currently rely on methods like mammography, ultrasound, and fine needle aspiration biopsy, but these approaches have some real limitations:
 
 \begin{itemize}
-    \item \textbf{Inter-observer variability}: Different radiologists may interpret the same image differently, leading to inconsistent diagnoses.
-    \item \textbf{Workload constraints}: The increasing volume of medical imaging data has created bottlenecks in healthcare systems.
-    \item \textbf{Subtle pattern detection}: Early-stage tumors may present subtle characteristics that are difficult to detect visually.
+    \item \textbf{Inconsistent readings}: Two radiologists looking at the same image might come to different conclusions.
+    \item \textbf{Heavy workloads}: The sheer volume of medical images creates bottlenecks in healthcare systems.
+    \item \textbf{Hard-to-spot patterns}: Early-stage tumors can have subtle features that are tough to catch by eye.
 \end{itemize}
 
-Machine learning techniques have emerged as powerful tools for assisting in diagnostic decision-making by identifying patterns in data that may not be immediately visible to human analysts. This project develops an explainable machine learning system that addresses these challenges while maintaining transparency and interpretability.
+Machine learning has become a promising way to help with these challenges. It can pick up on patterns in data that humans might miss. Our project builds an explainable ML system that tackles these issues while keeping things transparent enough for clinical use.
 
 \subsection{Problem Statement}
 
-The primary objective of this project is to develop a machine learning-based classification system that can:
+What we set out to build was a machine learning system that could:
 
 \begin{enumerate}
-    \item Accurately distinguish between benign and malignant breast tumors using cytological features.
-    \item Provide confidence scores for predictions to indicate reliability.
-    \item Identify the most influential features contributing to classification decisions.
-    \item Demonstrate robust performance through comprehensive evaluation metrics.
-    \item Maintain interpretability suitable for clinical decision support.
+    \item Tell benign tumors apart from malignant ones based on cell features.
+    \item Give confidence scores so users know how sure the model is.
+    \item Show which features had the biggest impact on each prediction.
+    \item Perform consistently across different evaluation metrics.
+    \item Stay interpretable enough to actually be useful in a clinical setting.
 \end{enumerate}
 
 \subsection{Scope and Objectives}
 
-This project encompasses the following specific objectives:
+Here is what we aimed to accomplish:
 
 \begin{enumerate}
-    \item \textbf{Data Analysis}: Comprehensive exploration of the Wisconsin Diagnostic Breast Cancer dataset.
-    \item \textbf{Model Development}: Implementation of multiple classification algorithms (Logistic Regression, Decision Tree, SVM, Random Forest).
-    \item \textbf{Ensemble Learning}: Integration of individual models through soft voting.
-    \item \textbf{Rigorous Evaluation}: Assessment using accuracy, precision, recall, F1-score, ROC-AUC, and cross-validation.
-    \item \textbf{Explainability}: Feature importance analysis and confidence scoring.
-    \item \textbf{Visualization}: Generation of interpretable graphical outputs.
+    \item \textbf{Data Analysis}: Dig into the Wisconsin Diagnostic Breast Cancer dataset and understand what we are working with.
+    \item \textbf{Model Development}: Build and train multiple classifiers---Logistic Regression, Decision Tree, SVM, and Random Forest.
+    \item \textbf{Ensemble Learning}: Combine these models using soft voting to get better overall predictions.
+    \item \textbf{Thorough Evaluation}: Test everything with accuracy, precision, recall, F1-score, ROC-AUC, and cross-validation.
+    \item \textbf{Explainability}: Add feature importance analysis and confidence scoring so the results make sense.
+    \item \textbf{Visualization}: Create clear charts and graphs to help interpret what the models are doing.
 \end{enumerate}
 
 \subsection{Report Organization}
 
-The remainder of this report is organized as follows:
+The rest of this report is laid out as follows:
 \begin{itemize}
-    \item \textbf{Section 2}: Reviews existing literature on machine learning in medical diagnosis.
-    \item \textbf{Section 3}: Describes the methodology, system architecture, and experimental results.
-    \item \textbf{Section 4}: Presents conclusions and directions for future work.
-    \item \textbf{Section 5}: Discusses the social impact and community service aspects.
-    \item \textbf{Section 6}: Lists all references cited in this report.
+    \item \textbf{Section 2}: A look at existing research on machine learning for medical diagnosis.
+    \item \textbf{Section 3}: Our methodology, system design, and experimental results.
+    \item \textbf{Section 4}: Conclusions and ideas for future work.
+    \item \textbf{Section 5}: How this project connects to social impact and community service.
+    \item \textbf{Section 6}: References we cited throughout.
 \end{itemize}
 
 %==================== SECTION 2: LITERATURE REVIEW ====================%
 \newpage
 \section{EXISTING WORK / LITERATURE REVIEW}
 
-The application of machine learning in medical diagnosis has gained significant attention, particularly in cancer detection. This section reviews relevant literature across four key areas.
+Machine learning has been getting a lot of attention in medical diagnosis, especially for cancer detection. Here we review the research that shaped our approach, covering four main areas.
 
 \subsection{Traditional Machine Learning Approaches}
 
 \subsubsection{Support Vector Machines}
-Support Vector Machines (SVM), introduced by Cortes and Vapnik \cite{cortes1995}, have been widely used in medical classification due to their effectiveness with high-dimensional data. SVMs construct optimal hyperplanes that maximize the margin between classes. For non-linearly separable data, the kernel trick enables implicit mapping to higher-dimensional spaces:
+Support Vector Machines, introduced by Cortes and Vapnik \cite{cortes1995}, have been popular in medical classification because they handle high-dimensional data well. The basic idea is to find a hyperplane that separates classes with the widest possible margin. When data is not linearly separable, you can use the kernel trick to map it into a higher-dimensional space:
 
 \begin{equation}
 K(x_i, x_j) = \phi(x_i)^T \phi(x_j)
 \end{equation}
 
-where $\phi$ is a mapping function. Common kernels include linear, polynomial, and Radial Basis Function (RBF):
+where $\phi$ is the mapping function. The most common kernels are linear, polynomial, and Radial Basis Function (RBF):
 
 \begin{equation}
 K_{RBF}(x_i, x_j) = \exp\left(-\gamma \|x_i - x_j\|^2\right)
 \end{equation}
 
 \subsubsection{Decision Trees and Random Forests}
-Decision Trees provide interpretable classification through hierarchical partitioning. However, they are prone to overfitting. Breiman \cite{breiman2001} introduced Random Forest, which aggregates multiple trees trained on bootstrap samples with random feature subsets:
+Decision Trees are nice because you can actually understand what they are doing---they split data based on feature thresholds in a way that is easy to follow. The downside is they tend to overfit. Breiman \cite{breiman2001} solved this with Random Forest, which trains many trees on different random subsets of the data and then combines their votes:
 
 \begin{equation}
 \hat{y} = \text{mode}\{h_1(x), h_2(x), ..., h_B(x)\}
 \end{equation}
 
-where $h_b(x)$ is the prediction of the $b$-th tree and $B$ is the total number of trees.
+where $h_b(x)$ is what the $b$-th tree predicts and $B$ is how many trees you have.
 
 \subsubsection{Logistic Regression}
-Despite its simplicity, Logistic Regression remains effective for binary classification. It models the probability using the sigmoid function:
+Logistic Regression is a simple but effective approach for binary classification. It models the probability using the sigmoid function:
 
 \begin{equation}
 P(y=1|x) = \sigma(w^T x + b) = \frac{1}{1 + e^{-(w^T x + b)}}
 \end{equation}
 
-The interpretability of coefficients makes it valuable in medical contexts where understanding feature contributions is essential.
+One big advantage is that the coefficients are easy to interpret, which matters a lot in medical settings where doctors want to understand why a model made a particular prediction.
 
 \subsection{Ensemble Learning Methods}
 
-Ensemble methods combine multiple models to improve prediction accuracy and robustness. Key approaches include:
+Ensemble methods work by combining multiple models to get better predictions than any single model could manage on its own. The main approaches are:
 
 \begin{itemize}
-    \item \textbf{Bagging}: Trains models on bootstrap samples and aggregates predictions (e.g., Random Forest).
-    \item \textbf{Boosting}: Sequentially trains models, with each focusing on previous errors (e.g., AdaBoost, XGBoost).
-    \item \textbf{Voting}: Combines predictions through majority voting (hard) or probability averaging (soft).
-    \item \textbf{Stacking}: Uses a meta-learner to combine base model predictions.
+    \item \textbf{Bagging}: Train models on different random samples of the data and average their predictions. Random Forest is a good example.
+    \item \textbf{Boosting}: Train models one after another, with each new model focusing on the mistakes of the previous ones. AdaBoost and XGBoost work this way.
+    \item \textbf{Voting}: Either take a majority vote (hard voting) or average the predicted probabilities (soft voting).
+    \item \textbf{Stacking}: Use one model to learn how to best combine the predictions from other models.
 \end{itemize}
 
-Recent work by Ebrahim et al. \cite{ebrahim2025} demonstrated the effectiveness of stacking ensemble methods combined with deep learning for breast cancer prediction, achieving significant improvements over individual classifiers.
+Ebrahim et al. \cite{ebrahim2025} recently showed that stacking ensembles combined with deep learning can significantly outperform individual classifiers for breast cancer prediction.
 
 \subsection{Explainable Artificial Intelligence (XAI)}
 
-In healthcare, model interpretability is as important as accuracy. Key XAI techniques include:
+In healthcare, being able to explain why a model made a certain prediction is just as important as getting the prediction right. The main techniques people use are:
 
 \begin{itemize}
-    \item \textbf{SHAP} (SHapley Additive exPlanations) \cite{lundberg2017}: Provides consistent feature attributions based on game theory.
-    \item \textbf{LIME} (Local Interpretable Model-agnostic Explanations) \cite{ribeiro2016}: Explains predictions using local surrogate models.
-    \item \textbf{Feature Importance}: Measures contribution of each feature to model predictions.
+    \item \textbf{SHAP} (SHapley Additive exPlanations) \cite{lundberg2017}: Uses game theory to figure out how much each feature contributed to a prediction.
+    \item \textbf{LIME} (Local Interpretable Model-agnostic Explanations) \cite{ribeiro2016}: Builds simple, interpretable models around individual predictions to explain them.
+    \item \textbf{Feature Importance}: Measures how much each feature matters to the model overall.
 \end{itemize}
 
 \subsection{Comparative Analysis with Published Works}
 
-Table \ref{tab:literature_comparison} compares our approach with recent published works on breast cancer classification using the WDBC dataset.
+Table \ref{tab:literature_comparison} shows how our approach stacks up against recent work on breast cancer classification using the same WDBC dataset.
 
 \begin{table}[H]
 \centering
@@ -346,7 +346,7 @@ Ebrahim et al. \cite{ebrahim2025} & 2025 & Stacking & 98.1\% & Ensemble stacking
 \end{tabular}
 \end{table}
 
-Our work achieves competitive accuracy while emphasizing explainability and practical deployment considerations.
+Our results are competitive with the best published work, and we put extra emphasis on making the system explainable and practical to deploy.
 
 %==================== SECTION 3: METHODOLOGY ====================%
 \newpage
@@ -356,7 +356,7 @@ Our work achieves competitive accuracy while emphasizing explainability and prac
 
 \subsubsection{Pipeline Architecture Overview}
 
-The proposed system follows a modular pipeline architecture designed for clarity, scalability, and reproducibility. Figure \ref{fig:architecture} illustrates the complete system workflow.
+We designed our system as a modular pipeline so each piece could be developed and tested separately. Figure \ref{fig:architecture} shows how everything fits together.
 
 \begin{figure}[H]
 \centering
@@ -420,7 +420,7 @@ The proposed system follows a modular pipeline architecture designed for clarity
 
 \subsubsection{Data Acquisition and Dataset Description}
 
-The system utilizes the Wisconsin Diagnostic Breast Cancer (WDBC) dataset \cite{wolberg1995}, a benchmark dataset from the UCI Machine Learning Repository. Table \ref{tab:dataset} summarizes its characteristics.
+We used the Wisconsin Diagnostic Breast Cancer (WDBC) dataset \cite{wolberg1995}, which is a well-known benchmark from the UCI Machine Learning Repository. Table \ref{tab:dataset} summarizes what we are working with.
 
 \begin{table}[H]
 \centering
@@ -438,11 +438,11 @@ Feature Categories & Mean, SE, Worst (10 each) \\ \hline
 \end{tabular}
 \end{table}
 
-The 30 features are computed from digitized images of fine needle aspirates and include:
+The 30 features come from digitized images of fine needle aspirates and describe:
 \begin{itemize}
-    \item \textbf{Geometric}: radius, perimeter, area
-    \item \textbf{Texture}: smoothness, compactness, concavity
-    \item \textbf{Shape}: concave points, symmetry, fractal dimension
+    \item \textbf{Geometric properties}: radius, perimeter, area
+    \item \textbf{Texture measures}: smoothness, compactness, concavity
+    \item \textbf{Shape descriptors}: concave points, symmetry, fractal dimension
 \end{itemize}
 
 \begin{figure}[H]
@@ -452,34 +452,36 @@ The 30 features are computed from digitized images of fine needle aspirates and 
 \label{fig:correlation}
 \end{figure}
 
-Figure \ref{fig:correlation} shows the correlation structure among features. High correlations exist between geometric features (radius, perimeter, area), which is expected given their mathematical relationships.
+Figure \ref{fig:correlation} shows how the features correlate with each other. The geometric features (radius, perimeter, area) are highly correlated, which makes sense since they are mathematically related.
 
 \subsubsection{Data Preprocessing Pipeline}
 
-The preprocessing stage involves two critical transformations:
+Before training, we needed to prepare the data properly:
 
 \textbf{1. Stratified Train-Test Split:}
+We split the data 80/20 for training and testing:
 \begin{equation}
 \mathcal{D} = \mathcal{D}_{train} \cup \mathcal{D}_{test}, \quad |\mathcal{D}_{train}| = 0.8|\mathcal{D}|
 \end{equation}
 
-Stratification ensures class proportions are maintained:
+We used stratified splitting to make sure both sets had the same proportion of benign and malignant cases:
 \begin{equation}
 \frac{|y_{train}^{(c)}|}{|\mathcal{D}_{train}|} = \frac{|y_{test}^{(c)}|}{|\mathcal{D}_{test}|} = \frac{|y^{(c)}|}{|\mathcal{D}|}, \quad \forall c \in \{0, 1\}
 \end{equation}
 
 \textbf{2. Standard Scaling (Z-score Normalization):}
+We normalized the features so they all have zero mean and unit variance:
 \begin{equation}
 z_i = \frac{x_i - \mu}{\sigma}, \quad \text{where } \mu = \frac{1}{n}\sum_{j=1}^{n}x_j, \quad \sigma = \sqrt{\frac{1}{n}\sum_{j=1}^{n}(x_j - \mu)^2}
 \end{equation}
 
-The scaler is fitted only on training data to prevent data leakage.
+Important: we only fit the scaler on training data to avoid data leakage.
 
 \subsection{Algorithm Design and Implementation}
 
 \subsubsection{Pipeline Algorithm}
 
-Algorithm \ref{alg:pipeline} presents the complete machine learning pipeline.
+Algorithm \ref{alg:pipeline} lays out the complete workflow from raw data to trained model.
 
 \begin{algorithm}[H]
 \caption{Breast Cancer Classification Pipeline}
@@ -517,15 +519,15 @@ Algorithm \ref{alg:pipeline} presents the complete machine learning pipeline.
 
 \subsubsection{Soft Voting Ensemble}
 
-The ensemble aggregates predicted probabilities from all models:
+Our ensemble combines the predicted probabilities from all four models:
 
 \begin{equation}
 \hat{y} = \argmax_{c \in \{0,1\}} \sum_{j=1}^{M} w_j \cdot P_j(y=c|x)
 \end{equation}
 
-where $M=4$ is the number of models and $w_j = \frac{1}{M}$ (equal weights).
+We use equal weights ($w_j = \frac{1}{M}$) across all $M=4$ models.
 
-Algorithm \ref{alg:softvote} details the soft voting mechanism.
+Algorithm \ref{alg:softvote} shows how the soft voting actually works.
 
 \begin{algorithm}[H]
 \caption{Soft Voting Prediction}
@@ -550,7 +552,7 @@ Algorithm \ref{alg:softvote} details the soft voting mechanism.
 
 \subsubsection{Evaluation Metrics}
 
-Given predictions $\hat{y}$ and true labels $y$, we define:
+Given our predictions $\hat{y}$ and the actual labels $y$, here is how we measure performance:
 
 \begin{align}
 \text{Accuracy} &= \frac{TP + TN}{TP + TN + FP + FN} \\[0.5em]
@@ -560,47 +562,47 @@ Given predictions $\hat{y}$ and true labels $y$, we define:
 \text{F1 Score} &= 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} = \frac{2TP}{2TP + FP + FN}
 \end{align}
 
-where $TP$, $TN$, $FP$, $FN$ denote true positives, true negatives, false positives, and false negatives respectively.
+where $TP$ = true positives, $TN$ = true negatives, $FP$ = false positives, and $FN$ = false negatives.
 
 \subsubsection{ROC-AUC}
 
-The Receiver Operating Characteristic (ROC) curve plots True Positive Rate vs False Positive Rate at various thresholds $\tau$:
+The ROC curve plots True Positive Rate against False Positive Rate as we vary the classification threshold $\tau$:
 
 \begin{align}
 TPR(\tau) &= \frac{|\{i : \hat{p}_i \geq \tau \land y_i = 1\}|}{|\{i : y_i = 1\}|} \\[0.5em]
 FPR(\tau) &= \frac{|\{i : \hat{p}_i \geq \tau \land y_i = 0\}|}{|\{i : y_i = 0\}|}
 \end{align}
 
-The Area Under the Curve (AUC) is computed as:
+The Area Under the Curve (AUC) tells us how well the model separates the classes:
 \begin{equation}
 AUC = \int_0^1 TPR(FPR^{-1}(t)) \, dt
 \end{equation}
 
 \subsubsection{Cross-Validation}
 
-For $k$-fold cross-validation, the dataset is partitioned into $k$ folds. The cross-validation score is:
+With $k$-fold cross-validation, we split the data into $k$ parts and train on $k-1$ of them while testing on the remaining one. We rotate through all $k$ parts and average the results:
 
 \begin{equation}
 CV_k = \frac{1}{k} \sum_{i=1}^{k} \text{Score}(m_i, \mathcal{D}_i^{test})
 \end{equation}
 
-where $m_i$ is trained on $\mathcal{D} \setminus \mathcal{D}_i$.
+where $m_i$ is trained on everything except fold $i$.
 
 \subsubsection{Gini Importance}
 
-For Random Forest, feature importance is computed using Gini impurity reduction:
+For Random Forest, we can measure feature importance by how much each feature helps reduce Gini impurity across all the trees:
 
 \begin{equation}
 \text{Importance}(f) = \frac{1}{|T|} \sum_{t \in T} \sum_{n \in N_t^f} \frac{n_{samples}(n)}{n_{samples}(root)} \cdot \Delta G(n)
 \end{equation}
 
-where $T$ is the set of trees, $N_t^f$ are nodes splitting on feature $f$, and $\Delta G(n)$ is the Gini impurity decrease.
+where $T$ is the set of trees, $N_t^f$ are the nodes that split on feature $f$, and $\Delta G(n)$ is how much the Gini impurity dropped at that node.
 
 \subsection{Implementation Details}
 
 \subsubsection{Key Code Implementation}
 
-Listing \ref{lst:ensemble} shows the core ensemble implementation.
+Listing \ref{lst:ensemble} shows the core code for building our ensemble.
 
 \begin{lstlisting}[style=pythonstyle, caption={Ensemble Model Implementation}, label={lst:ensemble}]
 from sklearn.ensemble import VotingClassifier
@@ -637,7 +639,7 @@ def build_ensemble():
 
 \subsubsection{Hyperparameter Configuration}
 
-Table \ref{tab:hyperparams} summarizes the hyperparameters used for each model.
+Table \ref{tab:hyperparams} lists the hyperparameters we used for each model. We mostly stuck with reasonable defaults that worked well.
 
 \begin{table}[H]
 \centering
@@ -663,7 +665,7 @@ Table \ref{tab:hyperparams} summarizes the hyperparameters used for each model.
 
 \subsubsection{Classification Performance}
 
-Table \ref{tab:results} presents the comprehensive performance metrics for all models.
+Table \ref{tab:results} shows how all our models performed on the test set.
 
 \begin{table}[H]
 \centering
@@ -680,16 +682,16 @@ Decision Tree & 0.9123 & 0.9559 & 0.9028 & 0.9286 & 0.9157 \\ \hline
 \end{tabular}
 \end{table}
 
-Key observations:
+A few things stood out:
 \begin{itemize}
-    \item Logistic Regression and SVM achieve identical accuracy (98.25\%), suggesting the problem is largely linearly separable after scaling.
-    \item All models except Decision Tree achieve ROC-AUC $>$ 0.99, indicating excellent discrimination.
-    \item The Ensemble maintains high recall (98.61\%), crucial for minimizing missed cancer cases.
+    \item Logistic Regression and SVM both hit 98.25\% accuracy, which suggests the data is pretty separable once you scale the features properly.
+    \item Every model except Decision Tree got an ROC-AUC above 0.99---really strong discrimination.
+    \item The Ensemble kept recall at 98.61\%, which is crucial since we really do not want to miss actual cancer cases.
 \end{itemize}
 
 \subsubsection{Cross-Validation Results}
 
-Table \ref{tab:cv_results} shows the 5-fold cross-validation results.
+Table \ref{tab:cv_results} shows the 5-fold cross-validation results, which tell us how stable each model is.
 
 \begin{table}[H]
 \centering
@@ -706,7 +708,7 @@ Decision Tree & 0.9099 & 0.0189 & [0.8721, 0.9477] \\ \hline
 \end{tabular}
 \end{table}
 
-The low standard deviations ($<2.5\%$) indicate consistent performance across different data partitions.
+The standard deviations are all under 2.5\%, which means the models perform consistently no matter how we split up the data.
 
 \begin{figure}[H]
 \centering
@@ -724,15 +726,15 @@ The low standard deviations ($<2.5\%$) indicate consistent performance across di
 \label{fig:confusion}
 \end{figure}
 
-The confusion matrix reveals:
+The confusion matrix breaks down like this:
 \begin{itemize}
-    \item \textbf{True Negatives (Benign correctly classified)}: 40
-    \item \textbf{True Positives (Malignant correctly classified)}: 71
-    \item \textbf{False Positives}: 2 (Benign misclassified as Malignant)
-    \item \textbf{False Negatives}: 1 (Malignant misclassified as Benign)
+    \item \textbf{True Negatives (Benign correctly identified)}: 40
+    \item \textbf{True Positives (Malignant correctly identified)}: 71
+    \item \textbf{False Positives}: 2 (Benign cases flagged as Malignant)
+    \item \textbf{False Negatives}: 1 (Malignant case missed)
 \end{itemize}
 
-The single false negative is clinically significant as it represents a missed cancer case.
+That one false negative is concerning from a clinical standpoint---it represents a cancer case that got missed.
 
 \subsubsection{ROC Curve Analysis}
 
@@ -743,7 +745,7 @@ The single false negative is clinically significant as it represents a missed ca
 \label{fig:roc}
 \end{figure}
 
-Figure \ref{fig:roc} demonstrates that all models (except Decision Tree) achieve AUC $>$ 0.99, indicating near-perfect discrimination ability.
+Figure \ref{fig:roc} makes it clear that all models except Decision Tree can discriminate between classes almost perfectly, with AUC values above 0.99.
 
 \subsubsection{Precision-Recall Analysis}
 
@@ -754,7 +756,7 @@ Figure \ref{fig:roc} demonstrates that all models (except Decision Tree) achieve
 \label{fig:pr_curves}
 \end{figure}
 
-The precision-recall curves (Figure \ref{fig:pr_curves}) show high average precision (AP $>$ 0.99) for the top models, important for imbalanced classification.
+The precision-recall curves (Figure \ref{fig:pr_curves}) show average precision above 0.99 for the best models. This is especially important since our classes are somewhat imbalanced.
 
 \subsubsection{Learning Curve Analysis}
 
@@ -765,11 +767,11 @@ The precision-recall curves (Figure \ref{fig:pr_curves}) show high average preci
 \label{fig:learning}
 \end{figure}
 
-Figure \ref{fig:learning} reveals:
+Looking at Figure \ref{fig:learning}, we can see:
 \begin{itemize}
-    \item All models converge with approximately 300 training samples.
-    \item Small gaps between training and validation scores indicate low overfitting.
-    \item SVM shows the most consistent convergence behavior.
+    \item All models level off at around 300 training samples---more data beyond that does not help much.
+    \item The training and validation scores stay close together, so we are not overfitting.
+    \item SVM shows the smoothest learning curve of the bunch.
 \end{itemize}
 
 \subsubsection{Feature Importance Analysis}
@@ -781,16 +783,16 @@ Figure \ref{fig:learning} reveals:
 \label{fig:importance}
 \end{figure}
 
-The top predictive features are:
+The features that mattered most were:
 \begin{enumerate}
-    \item \textbf{Worst Area}: Largest cell nucleus area
-    \item \textbf{Worst Concave Points}: Most severe concavity
-    \item \textbf{Worst Radius}: Largest radius measurement
-    \item \textbf{Mean Concave Points}: Average concavity
-    \item \textbf{Worst Perimeter}: Largest perimeter
+    \item \textbf{Worst Area}: The largest cell nucleus area in the sample
+    \item \textbf{Worst Concave Points}: The most severe concavity measurements
+    \item \textbf{Worst Radius}: The largest radius measurement
+    \item \textbf{Mean Concave Points}: Average concavity across cells
+    \item \textbf{Worst Perimeter}: The largest perimeter measurement
 \end{enumerate}
 
-These findings align with medical knowledge: malignant cells typically have larger, more irregular nuclei.
+This lines up with what doctors know: malignant cells tend to have larger, more irregular nuclei.
 
 \begin{figure}[H]
 \centering
@@ -799,7 +801,7 @@ These findings align with medical knowledge: malignant cells typically have larg
 \label{fig:distributions}
 \end{figure}
 
-Figure \ref{fig:distributions} shows clear separation between classes for the most important features, explaining the high classification accuracy.
+Figure \ref{fig:distributions} shows why classification works so well: the benign and malignant cases have clearly different distributions for the most important features.
 
 \subsubsection{Error Analysis}
 
@@ -810,11 +812,11 @@ Figure \ref{fig:distributions} shows clear separation between classes for the mo
 \label{fig:error}
 \end{figure}
 
-Error analysis (Figure \ref{fig:error}) reveals:
+Digging into the errors (Figure \ref{fig:error}), we found:
 \begin{itemize}
-    \item Correctly classified samples have higher average confidence.
-    \item Misclassified samples tend to lie near decision boundaries.
-    \item The 3 misclassified samples have ambiguous feature values.
+    \item Correct predictions tend to have higher confidence scores.
+    \item The misclassified samples are near the decision boundary, as you would expect.
+    \item All 3 misclassified samples have feature values that are ambiguous---they fall in the overlap region between classes.
 \end{itemize}
 
 \subsubsection{Model Comparison Visualization}
@@ -828,7 +830,7 @@ Error analysis (Figure \ref{fig:error}) reveals:
 
 \subsection{Sensitivity Analysis}
 
-Table \ref{tab:sensitivity} shows how key hyperparameters affect model performance.
+We also checked how sensitive the models are to hyperparameter choices. Table \ref{tab:sensitivity} summarizes what we found.
 
 \begin{table}[H]
 \centering
@@ -845,27 +847,27 @@ Logistic Reg. & C $\in$ [0.1, 1, 10] & 0.974 -- 0.982 & C = 1.0 \\ \hline
 \end{tabular}
 \end{table}
 
-The models show relatively stable performance across hyperparameter ranges, indicating robustness.
+The good news is the models are fairly robust---you do not need to tune hyperparameters obsessively to get good results.
 
 \subsection{Individual Contributions}
 
 \subsubsection*{Bhavya Sharma}
-Responsible for dataset acquisition and understanding the medical attributes used in the breast cancer detection system. This member analyzed the dataset features, studied the relationship between different tumor characteristics, and prepared the dataset for further processing. The work also involved initial data cleaning and organizing the dataset structure to ensure that it could be effectively used for machine learning model training.
+Bhavya handled getting the dataset and understanding what all the medical features actually mean. She dug into the relationships between tumor characteristics, did initial data cleaning, and got everything organized so we could actually use it for training.
 
 \subsubsection*{Suryanshi Ranawat}
-Focused on data preprocessing and exploratory data analysis. Tasks included handling missing values, normalizing and scaling the dataset, and performing statistical analysis to identify important features that influence breast cancer diagnosis. Visualizations such as correlation matrices and feature comparisons were created to help the team understand the dataset more effectively and support model development.
+Suryanshi took charge of preprocessing and exploratory data analysis. She dealt with missing values, normalized the data, and ran statistical analyses to figure out which features matter most for diagnosis. The correlation matrices and feature comparison plots she made really helped the rest of us understand what we were working with.
 
 \subsubsection*{Ujjwal Mishra}
-Worked on the implementation of machine learning algorithms used for tumor classification. Multiple models such as Logistic Regression, Decision Tree, and Support Vector Machine were implemented and trained using the processed dataset. The performance of different algorithms was also compared and model parameters were optimized to improve prediction accuracy.
+Ujjwal built and trained the machine learning models---Logistic Regression, Decision Tree, SVM, and the rest. He compared how they all performed and spent time tuning parameters to squeeze out better accuracy.
 
 \subsubsection*{Medhansh Singh Kushwaha}
-Played a significant role in developing the ensemble learning approach for the project. Multiple classifiers were combined to create a more reliable prediction model and performance evaluation was conducted using metrics such as accuracy, precision, recall, and F1-score. This work helped improve the overall robustness and reliability of the breast cancer detection system.
+Medhansh focused on the ensemble learning side of things. He figured out how to combine the individual classifiers effectively and ran all the evaluation metrics---accuracy, precision, recall, F1-score---to make sure the combined model was actually better than any single one.
 
 \subsubsection*{Soumyadeep Chakravarti}
-Responsible for the overall project coordination, technical validation, and final documentation. This member supervised the integration of different modules including data preprocessing, model implementation, and ensemble learning to ensure the system functioned correctly as a complete pipeline. In addition, detailed result analysis was conducted, model outputs were verified, and evaluation metrics were properly interpreted. The final report was also structured and compiled, including sections such as methodology, system architecture, working principle, results analysis, and conclusion, ensuring the project met academic and technical standards.
+Soumyadeep coordinated the overall project and handled the technical validation. He made sure all the pieces---preprocessing, models, ensemble---worked together as a complete pipeline. He also did the detailed results analysis, verified the outputs, and put together this final report covering methodology, architecture, results, and conclusions.
 
 \vspace{0.5cm}
-\noindent\textit{\textbf{Team Effort Note:} All team members actively participated in the planning, research, and development of the project. Each member contributed to different stages such as dataset analysis, evaluation, and report preparation. Regular discussions and collaboration helped improve the overall performance of the system.}
+\noindent\textit{\textbf{Team Note:} Everyone pitched in on planning, research, and development throughout the project. We had regular discussions that helped improve the system, and all of us contributed to different aspects of evaluation and documentation.}
 
 %==================== SECTION 4: CONCLUSION ====================%
 \newpage
@@ -873,90 +875,92 @@ Responsible for the overall project coordination, technical validation, and fina
 
 \subsection{Summary of Achievements}
 
-This project successfully developed an explainable machine learning system for breast cancer detection. Key achievements include:
+We set out to build an explainable ML system for breast cancer detection, and here is what we accomplished:
 
 \begin{enumerate}
-    \item \textbf{High Accuracy}: Logistic Regression and SVM achieved 98.25\% test accuracy, competitive with state-of-the-art methods.
+    \item \textbf{Strong Accuracy}: Logistic Regression and SVM both reached 98.25\% on the test set, which holds up well against published research.
     
-    \item \textbf{Robust Generalization}: 5-fold cross-validation confirmed consistent performance (std $<$ 2.5\%).
+    \item \textbf{Consistent Performance}: Cross-validation showed the models are stable, with standard deviations under 2.5\%.
     
-    \item \textbf{Excellent Discrimination}: ROC-AUC scores exceeding 0.99 for top models indicate near-perfect class separation.
+    \item \textbf{Excellent Class Separation}: ROC-AUC scores above 0.99 for the best models means they can distinguish benign from malignant cases almost perfectly.
     
-    \item \textbf{Clinical Relevance}: High recall (98.61\%) minimizes missed cancer diagnoses.
+    \item \textbf{High Recall}: The ensemble maintains 98.61\% recall, which minimizes the chance of missing actual cancer cases.
     
-    \item \textbf{Interpretability}: Feature importance analysis identified clinically meaningful predictors.
+    \item \textbf{Interpretable Results}: Feature importance analysis identified the features that matter most, and they line up with medical knowledge.
     
-    \item \textbf{Practical Deployment}: Model persistence enables real-world application.
+    \item \textbf{Ready for Use}: We saved the trained models so they can be loaded and used in real applications.
 \end{enumerate}
 
 \subsection{Limitations}
 
+There are some limitations worth noting:
 \begin{itemize}
-    \item Single dataset evaluation; multi-institutional validation needed.
-    \item Features derived from FNA images only; multimodal integration could improve performance.
-    \item Binary classification; multi-class tumor subtyping not addressed.
+    \item We only tested on one dataset; validation across multiple hospitals would strengthen the results.
+    \item The features come from FNA images only; incorporating other data sources could help.
+    \item We only did binary classification; distinguishing between different cancer subtypes was not addressed.
 \end{itemize}
 
 \subsection{Future Work}
 
+Some directions we would like to explore:
 \begin{enumerate}
-    \item \textbf{Advanced XAI}: Integration of SHAP for instance-level explanations.
-    \item \textbf{Deep Learning}: CNN-based feature extraction from raw images.
-    \item \textbf{Clinical Deployment}: Web-based interface with human-in-the-loop verification.
-    \item \textbf{Extended Validation}: Testing on external datasets from multiple institutions.
+    \item \textbf{Better Explanations}: Add SHAP values to explain individual predictions, not just overall feature importance.
+    \item \textbf{Deep Learning}: Use CNNs to extract features directly from raw images instead of pre-computed features.
+    \item \textbf{Web Interface}: Build a user-friendly interface where doctors can get predictions with human oversight.
+    \item \textbf{Broader Testing}: Validate on datasets from other institutions to make sure it generalizes.
 \end{enumerate}
 
 %==================== SECTION 5: SOCIAL IMPACT ====================%
 \newpage
 \section{SOCIAL IMPACT AND COMMUNITY SERVICE}
 
-As an Engineering Project in Community Service (EPICS), this work addresses significant healthcare challenges with direct societal benefits.
+As an EPICS project, our work is meant to address real healthcare challenges that affect people's lives.
 
 \subsection{Healthcare Accessibility}
 
-Breast cancer screening is often limited in resource-constrained settings due to:
+Breast cancer screening is not equally available everywhere. In many places, especially rural areas and developing regions, there are real barriers:
 \begin{itemize}
-    \item Shortage of trained radiologists and pathologists
-    \item High costs of expert consultation
-    \item Geographic barriers in rural areas
+    \item Not enough trained radiologists and pathologists to go around
+    \item Expert consultations are expensive
+    \item People in remote areas have trouble accessing specialized care
 \end{itemize}
 
-Machine learning-based diagnostic support can help address these gaps by:
+A tool like ours could help by:
 \begin{itemize}
-    \item Providing preliminary screening assistance
-    \item Reducing diagnostic turnaround time
-    \item Enabling telemedicine integration
+    \item Giving healthcare workers a way to do preliminary screening
+    \item Speeding up how long it takes to get a diagnosis
+    \item Making telemedicine more effective
 \end{itemize}
 
 \subsection{Educational Impact}
 
-This project demonstrates practical applications of:
+This project also shows how you can apply:
 \begin{itemize}
-    \item Data science and machine learning concepts
-    \item Software engineering best practices
+    \item Data science and machine learning concepts to real problems
+    \item Good software engineering practices
     \item Healthcare informatics principles
 \end{itemize}
 
-The open-source codebase serves as an educational resource for students learning applied machine learning.
+Since we are making the code open-source, students and researchers can use it to learn about applied machine learning.
 
 \subsection{Ethical Considerations}
 
-The system is designed as a \textit{decision support tool}, not a replacement for clinical expertise. Key ethical principles incorporated:
+We want to be clear: this system is meant to \textit{support} doctors, not replace them. Here are the ethical principles we built in:
 
 \begin{itemize}
-    \item \textbf{Transparency}: All predictions include confidence scores and feature explanations.
-    \item \textbf{Human-in-the-loop}: Final diagnosis remains with qualified medical professionals.
-    \item \textbf{Accountability}: Comprehensive logging enables audit trails.
-    \item \textbf{Equity}: Open-source availability promotes broad access.
+    \item \textbf{Transparency}: Every prediction comes with a confidence score and an explanation of which features mattered.
+    \item \textbf{Human oversight}: The final diagnosis still comes from a qualified medical professional.
+    \item \textbf{Accountability}: We log everything so you can trace back how any decision was made.
+    \item \textbf{Open access}: Making the code open-source means anyone can use it, not just well-funded institutions.
 \end{itemize}
 
 \subsection{Sustainable Development Goals}
 
-This project contributes to UN Sustainable Development Goals:
+Our project connects to several UN Sustainable Development Goals:
 \begin{itemize}
-    \item \textbf{SDG 3 (Good Health)}: Improving cancer detection capabilities
-    \item \textbf{SDG 4 (Quality Education)}: Providing learning resources
-    \item \textbf{SDG 10 (Reduced Inequalities)}: Democratizing diagnostic technology
+    \item \textbf{SDG 3 (Good Health)}: Better cancer detection saves lives
+    \item \textbf{SDG 4 (Quality Education)}: The project serves as a learning resource
+    \item \textbf{SDG 10 (Reduced Inequalities)}: Making diagnostic tech accessible to everyone
 \end{itemize}
 
 %==================== SECTION 6: REFERENCES ====================%
@@ -1089,13 +1093,13 @@ S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' G
 \textbf{Languages:} English, Hindi
 
 \vspace{0.5cm}
-\noindent I am currently pursuing a B.Tech in Electronics and Communication Engineering (ECE) with a strong passion for electronics design, IoT systems, and wireless communication technologies. I enjoy working on practical engineering solutions that integrate hardware and software to solve real-world problems.
+\noindent I am studying Electronics and Communication Engineering at VIT Bhopal. I have always been drawn to electronics design, IoT, and wireless communication---basically anything that involves making hardware talk to software to solve real problems.
 
 \vspace{0.3cm}
-\noindent During my academic journey, I have worked on several technical projects including an IoT-based Smart Water Irrigation System, a RC car model, a Network Jammer Prototype, and a Fire-Extinguishing Drone. These projects have helped me gain hands-on experience in embedded systems, circuit design, motor control techniques and wireless communication.
+\noindent Over the past few years, I have worked on projects like a smart water irrigation system, an RC car, a network jammer prototype, and a fire-extinguishing drone. These gave me hands-on experience with embedded systems, circuit design, and motor control.
 
 \vspace{0.3cm}
-\noindent I am highly motivated to expand my knowledge in advanced electronic technologies as well as the software domain, particularly Artificial Intelligence and Machine Learning. I aim to develop innovative solutions that combine electronics, intelligent systems, and modern computing technologies to improve communication, automation, and smart device applications.
+\noindent I am also getting into AI and machine learning now. I want to find ways to combine electronics with intelligent systems to build smarter devices and better automation.
 
 % --- SURYANSHI RANAWAT ---
 \newpage
@@ -1111,10 +1115,10 @@ S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' G
 \textbf{Languages:} English, Hindi
 
 \vspace{0.5cm}
-\noindent I am currently pursuing a B.Tech in Computer Science and Engineering. I have a strong interest in Artificial Intelligence, Machine Learning, and data-driven problem solving. I have worked on projects such as an AI Disease Detection Platform and a Crop Disease Detection System, which focus on applying AI and machine learning techniques to solve real-world problems in healthcare and agriculture.
+\noindent I am doing my B.Tech in Computer Science at VIT Bhopal. AI, machine learning, and data-driven problem solving are what get me excited. I have built an AI disease detection platform and a crop disease detection system that use ML to tackle real challenges in healthcare and agriculture.
 
 \vspace{0.3cm}
-\noindent My areas of interest include Artificial Intelligence, deep learning, predictive modeling, and intelligent automation systems. I am particularly interested in exploring how AI can be used to build innovative solutions that improve healthcare, agriculture, and decision-making systems.
+\noindent I am particularly interested in deep learning, predictive modeling, and intelligent automation. I like thinking about how AI can make healthcare better, help farmers, and improve how we make decisions.
 
 % --- UJJWAL MISHRA ---
 \newpage
@@ -1130,13 +1134,13 @@ S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' G
 \textbf{Languages:} English, Hindi
 
 \vspace{0.5cm}
-\noindent I am currently pursuing a B.Tech in Electronics and Communication Engineering (ECE). I have a strong interest in electronics systems, embedded technologies, and communication networks. I have worked on projects such as a Mobile Network Jammer and a Hexa-Octal Firefighting Drone, which focus on applying engineering concepts to develop practical solutions for safety and communication-related challenges.
+\noindent I am studying Electronics and Communication Engineering at VIT Bhopal. Electronics, embedded systems, and communication networks are my main interests. I have worked on a mobile network jammer and a hexa-octal firefighting drone, both focused on applying engineering to safety and communication challenges.
 
 \vspace{0.3cm}
-\noindent My areas of interest include embedded systems, wireless communication, robotics, and intelligent electronic systems.
+\noindent Embedded systems, wireless communication, robotics, and intelligent electronic systems are what I want to keep exploring.
 
 \vspace{0.3cm}
-\noindent In addition to my technical interests, I possess keen leadership abilities and strong teamwork skills, which help me effectively collaborate and manage project responsibilities. My goal is to continue developing advanced technological solutions that contribute to innovation, safety, and efficient communication systems.
+\noindent Beyond the technical stuff, I enjoy taking on leadership roles and working with teams. I want to keep building technology that makes things safer and more efficient.
 
 % --- MEDHANSH SINGH KUSHWAHA ---
 \newpage
@@ -1152,13 +1156,13 @@ S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' G
 \textbf{Languages:} English, Hindi
 
 \vspace{0.5cm}
-\noindent I am currently pursuing a B.Tech in Computer Science Engineering (CSE) with a strong interest in web development, full stack technologies, and digital design. I have experience working with HTML, CSS, React.js, Node.js, and MySQL to build responsive and user-friendly web applications.
+\noindent I am pursuing Computer Science at VIT Bhopal with a focus on web development, full stack technologies, and digital design. I work with HTML, CSS, React.js, Node.js, and MySQL to build responsive web applications.
 
 \vspace{0.3cm}
-\noindent I am also interested in graphic design and UI/UX, using tools such as Adobe Photoshop, Figma, and Blender to create visual content and interface designs. Currently, I am contributing to a Breast Cancer Detection project, where I apply my development and design skills to support the software and interface aspects of the system.
+\noindent I also do graphic design and UI/UX work using Photoshop, Figma, and Blender. For this breast cancer detection project, I contributed to the software and interface aspects.
 
 \vspace{0.3cm}
-\noindent Along with my technical skills, I possess strong creativity, problem-solving ability, and teamwork skills, and I aim to develop innovative technology solutions that contribute to meaningful real-world applications.
+\noindent I like combining creativity with problem-solving and enjoy working with teams to build things that actually matter.
 
 % --- SOUMYADEEP CHAKRAVARTI ---
 \newpage
@@ -1174,9 +1178,9 @@ S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' G
 \textbf{Languages:} English, Hindi
 
 \vspace{0.5cm}
-\noindent I am currently pursuing a B.Tech in Computer Science and Engineering with a specialization in Artificial Intelligence. I have a strong interest in Artificial Intelligence, Machine Learning, and systems programming. I have worked on projects such as Jarvis, a C-based AI personal assistant that integrates local language models for intelligent interaction, and PyProbe, a tool for exploring Python's internal memory structures and object layouts.
+\noindent I am studying Computer Science with a specialization in AI at VIT Bhopal. AI, machine learning, and systems programming are what I spend most of my time on. I built Jarvis, a C-based AI assistant that integrates local language models, and PyProbe, a tool for exploring Python's memory structures.
 
 \vspace{0.3cm}
-\noindent My areas of interest include Artificial Intelligence, deep learning, and systems-level software development. I am particularly interested in exploring how AI can be combined with efficient low-level programming to build intelligent assistants, advanced tooling, and scalable AI systems.
+\noindent I am interested in combining AI with efficient low-level programming to build intelligent assistants, developer tools, and scalable AI systems.
 
 \end{document}

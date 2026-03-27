@@ -1,0 +1,403 @@
+\documentclass[12pt]{article}
+
+% --- Packages ---
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+
+% Define argmax operator
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% Code listing style
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{orange},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{gray!5},
+    showstringspaces=false,
+}
+
+% --- Setup ---
+\setstretch{1.1}
+\pagestyle{plain}
+\sloppy
+
+% Format Section Headings
+\titleformat{\section}{\fontsize{14}{16}\bfseries\uppercase}{\thesection.}{1em}{}
+\titleformat{\subsection}{\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+%==================== TITLE PAGE ====================%
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    {\fontsize{16}{20} \selectfont \textbf{Explainable Breast Cancer Detection using Ensemble Learning} \par}
+    
+    \vspace{1cm}
+    
+    {\fontsize{14}{18} \selectfont \textbf{Individual Contribution Report} \par}
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{EPICS Phase -- II} \par}
+    
+    \vspace{1.5cm}
+    
+    {\large \textit{Submitted by} \par}
+    
+    \vspace{0.5cm}
+    
+    {\Large \textbf{Medhansh Singh Kushwaha} \par}
+    {\large Register Number: 23BCE11385 \par}
+    
+    \vspace{1.5cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{../Assets/VIT_LOGO.png}
+    \end{figure}
+    
+    \vspace{1cm}
+    
+    {\large \textit{in partial fulfillment of the requirements for the degree of} \par}
+    
+    \vspace{0.3cm}
+    
+    {\large \textbf{Bachelor of Technology} \par}
+    {\large Computer Science and Engineering \par}
+    
+    \vfill
+    
+    \textbf{VIT Bhopal University} \\
+    \textbf{Kothrikalan, Sehore} \\
+    \textbf{Madhya Pradesh} \\
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{March 2026}}
+    
+\end{titlepage}
+
+%==================== ABSTRACT ====================%
+\newpage
+\pagenumbering{roman}
+\begin{center}
+    \textbf{\Large Abstract}
+\end{center}
+
+\noindent Breast cancer is still one of the biggest health challenges for women around the world, and detecting it early can genuinely save lives. Our team built a machine learning system that tries to make cancer detection not just accurate, but also transparent -- because in healthcare, a black-box prediction isn't very helpful.
+
+\vspace{0.5cm}
+\noindent We experimented with multiple classifiers -- Logistic Regression, Decision Trees, SVM, and Random Forest -- and then combined them using soft voting to get predictions that are more stable and trustworthy. My job was specifically focused on this ensemble part.
+
+\vspace{0.5cm}
+\noindent One thing we really cared about was making the system explainable. We didn't want it to just spit out ``malignant'' or ``benign'' -- we wanted confidence scores and insight into which features drove the decision. Our best models (Logistic Regression and SVM) both reached 98.25\% accuracy with ROC-AUC above 0.99, which we were pretty excited about.
+
+\vspace{0.5cm}
+\noindent \textbf{Keywords:} Breast Cancer Detection, Ensemble Learning, Soft Voting, Model Evaluation, Performance Metrics, Classifier Combination
+
+%==================== TABLE OF CONTENTS ====================%
+\newpage
+\tableofcontents
+
+%==================== MY CONTRIBUTION ====================%
+\newpage
+\pagenumbering{arabic}
+\section{MY CONTRIBUTION}
+
+\subsection{Overview}
+My main responsibility in this project was putting together the \textbf{ensemble learning system} -- basically figuring out how to combine predictions from multiple models into one that's hopefully better than any of them alone. I also spent a lot of time working on the evaluation metrics to make sure we were measuring performance properly.
+
+\subsection{Ensemble Learning Implementation}
+
+\subsubsection{Soft Voting Classifier}
+The core idea I implemented was soft voting, where instead of just counting ``votes'' from each model, we average their probability estimates. Mathematically, it looks like this:
+
+\begin{equation}
+\hat{y} = \argmax_{c \in \{0,1\}} \sum_{j=1}^{M} w_j \cdot P_j(y=c|x)
+\end{equation}
+
+Here, $M=4$ (we have four models), and I used equal weights $w_j = \frac{1}{M}$ for simplicity.
+
+\begin{lstlisting}[style=pythonstyle, caption={Soft Voting Ensemble Implementation}]
+from sklearn.ensemble import VotingClassifier
+
+def build_ensemble(models):
+    """Build soft voting ensemble classifier."""
+    estimators = list(models.items())
+    ensemble = VotingClassifier(
+        estimators=estimators,
+        voting="soft"  # Use probability averaging
+    )
+    return ensemble
+\end{lstlisting}
+
+\subsubsection{Why Soft Voting}
+I picked soft voting over hard voting for a few reasons:
+\begin{itemize}
+    \item It uses probability estimates instead of just yes/no predictions, which is way more informative
+    \item A model that's 95\% confident should count more than one that's barely 51\% confident
+    \item We can actually get meaningful confidence scores out of it
+    \item For medical stuff, knowing \textit{how sure} the model is matters a lot
+\end{itemize}
+
+\subsubsection{Soft Voting Algorithm}
+Here's the actual prediction flow I set up:
+
+\begin{algorithm}[H]
+\caption{Soft Voting Prediction}
+\begin{algorithmic}[1]
+\Require Input sample $x$, trained models $\{m_1, ..., m_M\}$, weights $\{w_1, ..., w_M\}$
+\Ensure Predicted class $\hat{y}$, confidence $\hat{p}$
+
+\For{$j = 1$ to $M$}
+    \State $p_j \gets m_j.\text{predict\_proba}(x)$ \Comment{$p_j \in \mathbb{R}^{|C|}$}
+\EndFor
+
+\State $p_{avg} \gets \sum_{j=1}^{M} w_j \cdot p_j$ \Comment{Weighted average}
+\State $\hat{y} \gets \argmax(p_{avg})$
+\State $\hat{p} \gets \max(p_{avg})$ \Comment{Confidence score}
+
+\State \Return $\hat{y}, \hat{p}$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Performance Evaluation}
+
+I also built out a pretty thorough evaluation system because I wanted to make sure we weren't fooling ourselves with just accuracy numbers.
+
+\subsubsection{Evaluation Metrics Implementation}
+These are the metrics I implemented and tracked:
+
+\begin{align}
+\text{Accuracy} &= \frac{TP + TN}{TP + TN + FP + FN} \\[0.5em]
+\text{Precision} &= \frac{TP}{TP + FP} \\[0.5em]
+\text{Recall (Sensitivity)} &= \frac{TP}{TP + FN} \\[0.5em]
+\text{F1 Score} &= 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{align}
+
+\subsubsection{ROC-AUC Calculation}
+ROC curves were really useful for understanding performance across different thresholds:
+
+\begin{lstlisting}[style=pythonstyle, caption={ROC-AUC Calculation}]
+from sklearn.metrics import roc_curve, auc
+
+def calculate_roc_auc(model, X_test, y_test):
+    y_prob = model.predict_proba(X_test)[:, 1]
+    fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+    roc_auc = auc(fpr, tpr)
+    return fpr, tpr, roc_auc
+\end{lstlisting}
+
+\subsubsection{Cross-Validation}
+To make sure our results weren't just from getting lucky with the train/test split, I ran 5-fold cross-validation:
+
+\begin{equation}
+CV_k = \frac{1}{k} \sum_{i=1}^{k} \text{Score}(m_i, \mathcal{D}_i^{test})
+\end{equation}
+
+\begin{lstlisting}[style=pythonstyle, caption={Cross-Validation Implementation}]
+from sklearn.model_selection import cross_val_score
+
+def evaluate_with_cv(model, X, y, cv=5):
+    scores = cross_val_score(model, X, y, cv=cv)
+    return scores.mean(), scores.std()
+\end{lstlisting}
+
+\subsection{Results Analysis}
+
+After running everything, here's how the models stacked up:
+
+\begin{table}[H]
+\centering
+\caption{Performance Metrics Comparison}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\ \hline
+Logistic Regression & 0.9825 & 0.9861 & 0.9861 & 0.9861 & 0.9954 \\ \hline
+SVM & 0.9825 & 0.9861 & 0.9861 & 0.9861 & 0.9950 \\ \hline
+\textbf{Ensemble} & 0.9737 & 0.9726 & 0.9861 & 0.9793 & 0.9954 \\ \hline
+Random Forest & 0.9561 & 0.9589 & 0.9722 & 0.9655 & 0.9939 \\ \hline
+Decision Tree & 0.9123 & 0.9559 & 0.9028 & 0.9286 & 0.9157 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Cross-Validation Results}
+
+\begin{table}[H]
+\centering
+\caption{5-Fold Cross-Validation Results}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Mean Accuracy} & \textbf{Std Dev} & \textbf{95\% CI} \\ \hline
+Logistic Regression & 0.9802 & 0.0128 & [0.9546, 1.000] \\ \hline
+SVM & 0.9714 & 0.0179 & [0.9356, 1.000] \\ \hline
+\textbf{Ensemble} & 0.9692 & 0.0176 & [0.9340, 1.000] \\ \hline
+Random Forest & 0.9538 & 0.0235 & [0.9068, 1.000] \\ \hline
+Decision Tree & 0.9099 & 0.0189 & [0.8721, 0.9477] \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Ensemble Performance Analysis}
+
+Honestly, the results were a bit surprising -- here's my take on them:
+
+\subsubsection{What Worked Well}
+\begin{itemize}
+    \item The ensemble kept recall at 98.61\%, which is crucial -- we really don't want to miss actual cancer cases
+    \item It tied for best ROC-AUC (0.9954), showing excellent discrimination ability
+    \item It's more stable than Decision Tree alone, which was kind of all over the place
+    \item The confidence scores are actually useful, not just numbers
+\end{itemize}
+
+\subsubsection{What Surprised Me}
+\begin{itemize}
+    \item The ensemble didn't beat Logistic Regression or SVM on accuracy -- that was unexpected
+    \item Turns out this problem is pretty linear once the data is preprocessed properly
+    \item The ensemble does add safety though -- if one model goes haywire, the others can compensate
+    \item I think weighted voting (giving better models more say) could have improved results
+\end{itemize}
+
+\subsection{Reliability and Robustness Assessment}
+
+I dug deeper into how reliable the system actually is:
+
+\subsubsection{Confidence Score Analysis}
+\begin{itemize}
+    \item When the model got things right, confidence was usually high (above 0.8)
+    \item Wrong predictions tended to have confidence near 0.5 -- basically the model was unsure
+    \item This is actually good news -- it means the confidence scores are meaningful
+\end{itemize}
+
+\subsubsection{Error Analysis}
+I looked closely at the 3 samples we got wrong:
+\begin{itemize}
+    \item 2 were false positives (benign tumors called malignant)
+    \item 1 was a false negative (actual cancer we missed)
+    \item All three had feature values right on the edge between classes -- borderline cases
+\end{itemize}
+
+%==================== PROJECT OVERVIEW ====================%
+\newpage
+\section{PROJECT OVERVIEW}
+
+\subsection{Problem Statement}
+We set out to build something that could tell benign tumors from malignant ones, give confidence levels with predictions, and actually explain its reasoning. Just a ``yes cancer'' or ``no cancer'' output wasn't going to cut it for a medical application.
+
+\subsection{System Architecture}
+We split the project into layers:
+\begin{enumerate}
+    \item \textbf{Data Layer}: Getting and cleaning the data
+    \item \textbf{Model Layer}: The individual classification algorithms
+    \item \textbf{Ensemble Layer}: Where my soft voting work came in
+    \item \textbf{Output Layer}: Metrics, visualizations, and explanations
+\end{enumerate}
+
+\subsection{Results Achieved}
+The final numbers were solid:
+\begin{itemize}
+    \item LR and SVM both got 98.25\% accuracy
+    \item ROC-AUC above 0.99 for the best models
+    \item 98.61\% recall -- we caught almost all the actual cancer cases
+    \item Cross-validation showed results were consistent, not just luck
+\end{itemize}
+
+%==================== TEAM CONTRIBUTIONS ====================%
+\newpage
+\section{TEAM CONTRIBUTIONS}
+
+\subsection{Team Members and Their Roles}
+
+\begin{itemize}
+    \item \textbf{Bhavya Sharma}: Got the dataset and explained what all the medical features mean
+    \item \textbf{Suryanshi Ranawat}: Handled data cleaning and exploratory analysis
+    \item \textbf{Ujjwal Mishra}: Implemented the actual ML algorithms
+    \item \textbf{Medhansh Singh Kushwaha (Me)}: Built the ensemble system and evaluation framework
+    \item \textbf{Soumyadeep Chakravarti}: Kept everything coordinated and did the final writeup
+\end{itemize}
+
+\subsection{Collaboration}
+Everyone pulled their weight on this one. My ensemble code took the models Ujjwal built and combined them, so we had to work closely to make sure everything connected properly. The team would usually meet up to discuss results and figure out next steps.
+
+%==================== LEARNING OUTCOMES ====================%
+\newpage
+\section{LEARNING OUTCOMES}
+
+Here's what I took away from this project:
+
+\begin{enumerate}
+    \item \textbf{Ensemble Learning}: I really get ensemble methods now -- not just how to use them, but when they help and when they don't
+    
+    \item \textbf{Model Evaluation}: Learned that accuracy alone is never enough. Precision, recall, F1, ROC-AUC -- they all tell different parts of the story
+    
+    \item \textbf{Cross-Validation}: K-fold CV went from something I'd read about to something I actually understand and use
+    
+    \item \textbf{Statistics}: Got more comfortable with confidence intervals and understanding what standard deviation actually means for model reliability
+    
+    \item \textbf{Healthcare Context}: In medical ML, missing a cancer case (false negative) is way worse than a false alarm -- that really shapes how you design things
+    
+    \item \textbf{scikit-learn}: Got way more comfortable with the library, especially the ensemble and metrics modules
+\end{enumerate}
+
+%==================== CONCLUSION ====================%
+\newpage
+\section{CONCLUSION}
+
+My part of this project was all about the ensemble -- combining multiple models to (hopefully) get better predictions than any single one. I built a soft voting classifier that averages probability estimates from four different models, and I set up a thorough evaluation system to measure how well everything worked.
+
+The results were interesting. The ensemble kept recall really high (98.61\%), which matters a lot when you're dealing with cancer detection -- missing an actual case could be devastating. But honestly, it didn't beat Logistic Regression or SVM on pure accuracy. That taught me something: ensembles aren't magic, and sometimes a simple model on well-prepared data is hard to beat.
+
+Still, I think the ensemble adds value. It's more robust -- if one model has a bad day, the others can compensate. And the confidence scores it produces are actually useful for doctors to know how certain the system is.
+
+This EPICS project taught me a lot about how to properly evaluate ML systems, not just train them. The healthcare angle made everything feel more real -- these aren't just numbers, they represent actual diagnostic decisions that matter.
+
+%==================== REFERENCES ====================%
+\newpage
+\section{REFERENCES}
+
+\begin{thebibliography}{99}
+
+\bibitem{breiman2001}
+L. Breiman, ``Random Forests,'' \textit{Machine Learning}, vol. 45, no. 1, pp. 5--32, 2001.
+
+\bibitem{ebrahim2025}
+A. Ebrahim, M. Sedky, and A. Mesbah, ``Enhancing breast cancer prediction through stacking ensemble and deep learning integration,'' \textit{PeerJ Computer Science}, vol. 11, e2461, 2025.
+
+\bibitem{pedregosa2011}
+F. Pedregosa et al., ``Scikit-learn: Machine Learning in Python,'' \textit{JMLR}, vol. 12, pp. 2825--2830, 2011. [Online]. Available: \url{https://scikit-learn.org}
+
+\bibitem{bishop2006}
+C. M. Bishop, \textit{Pattern Recognition and Machine Learning}, Springer, 2006.
+
+\bibitem{github2026}
+S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' GitHub, 2026. [Online]. Available: \url{https://github.com/Soumyadeep-Chakravarti/EPICS_Project}
+
+\end{thebibliography}
+
+\end{document}

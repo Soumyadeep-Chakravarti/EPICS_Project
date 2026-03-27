@@ -1,0 +1,408 @@
+\documentclass[12pt]{article}
+
+% --- Packages ---
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+
+% Code listing style
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{orange},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{gray!5},
+    showstringspaces=false,
+}
+
+% --- Setup ---
+\setstretch{1.1}
+\pagestyle{plain}
+\sloppy
+
+% Format Section Headings
+\titleformat{\section}{\fontsize{14}{16}\bfseries\uppercase}{\thesection.}{1em}{}
+\titleformat{\subsection}{\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+%==================== TITLE PAGE ====================%
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    {\fontsize{16}{20} \selectfont \textbf{Explainable Breast Cancer Detection using Ensemble Learning} \par}
+    
+    \vspace{1cm}
+    
+    {\fontsize{14}{18} \selectfont \textbf{Individual Contribution Report} \par}
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{EPICS Phase -- II} \par}
+    
+    \vspace{1.5cm}
+    
+    {\large \textit{Submitted by} \par}
+    
+    \vspace{0.5cm}
+    
+    {\Large \textbf{Ujjwal Mishra} \par}
+    {\large Register Number: 23BEC10079 \par}
+    
+    \vspace{1.5cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{../Assets/VIT_LOGO.png}
+    \end{figure}
+    
+    \vspace{1cm}
+    
+    {\large \textit{in partial fulfillment of the requirements for the degree of} \par}
+    
+    \vspace{0.3cm}
+    
+    {\large \textbf{Bachelor of Technology} \par}
+    {\large Electronics and Communication Engineering \par}
+    
+    \vfill
+    
+    \textbf{VIT Bhopal University} \\
+    \textbf{Kothrikalan, Sehore} \\
+    \textbf{Madhya Pradesh} \\
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{March 2026}}
+    
+\end{titlepage}
+
+%==================== ABSTRACT ====================%
+\newpage
+\pagenumbering{roman}
+\begin{center}
+    \textbf{\Large Abstract}
+\end{center}
+
+\noindent Breast cancer continues to be a major health concern worldwide, and catching it early can save lives. Our team built a machine learning system that not only detects cancer accurately but also explains its reasoning -- important for any medical application where doctors need to trust and understand the output.
+
+\vspace{0.5cm}
+\noindent We tested out four different classifiers -- Logistic Regression, Decision Trees, SVM, and Random Forest -- and combined them with soft voting. My job was specifically implementing these individual algorithms and figuring out which configurations worked best.
+
+\vspace{0.5cm}
+\noindent We focused heavily on making the system interpretable, with confidence scores and feature importance analysis. In the end, Logistic Regression and SVM both hit 98.25\% accuracy with ROC-AUC scores above 0.99 -- pretty impressive results for classical ML methods.
+
+\vspace{0.5cm}
+\noindent \textbf{Keywords:} Breast Cancer Detection, Machine Learning, Classification Algorithms, Support Vector Machine, Random Forest, Logistic Regression
+
+%==================== TABLE OF CONTENTS ====================%
+\newpage
+\tableofcontents
+
+%==================== MY CONTRIBUTION ====================%
+\newpage
+\pagenumbering{arabic}
+\section{MY CONTRIBUTION}
+
+\subsection{Overview}
+My main job on this project was \textbf{implementing the machine learning algorithms} we used for classification. I got to work hands-on with four different classifiers, tuning them and figuring out what worked best for our breast cancer detection problem.
+
+\subsection{Algorithm Implementation}
+
+I implemented four classification algorithms. Here's how each one went:
+
+\subsubsection{Logistic Regression}
+This was our baseline -- simple but effective. It models the probability of malignancy using a sigmoid function:
+
+\begin{equation}
+P(y=1|x) = \sigma(w^T x + b) = \frac{1}{1 + e^{-(w^T x + b)}}
+\end{equation}
+
+What I actually set up:
+\begin{itemize}
+    \item Added L2 regularization (C=1.0) to prevent overfitting
+    \item Bumped max\_iter to 5000 because it wasn't converging with the default
+    \item Used LBFGS optimizer (works well for smaller datasets)
+    \item Hit 98.25\% accuracy -- honestly surprised how well this simple model did
+\end{itemize}
+
+\begin{lstlisting}[style=pythonstyle, caption={Logistic Regression Implementation}]
+from sklearn.linear_model import LogisticRegression
+
+lr_model = LogisticRegression(
+    max_iter=5000,
+    C=1.0,
+    random_state=42
+)
+lr_model.fit(X_train, y_train)
+\end{lstlisting}
+
+\subsubsection{Decision Tree Classifier}
+I included Decision Tree mostly for interpretability -- you can actually trace through its decisions:
+
+\begin{itemize}
+    \item Used Gini impurity for splits (standard choice)
+    \item Let it grow to full depth to see what it could do
+    \item Only got 91.23\% accuracy -- definitely the weakest performer
+\end{itemize}
+
+The Decision Tree's rules are easy to understand, but it struggled compared to other methods. Probably overfitting on training data.
+
+\subsubsection{Support Vector Machine (SVM)}
+SVM with RBF kernel was interesting to implement. The kernel maps data to higher dimensions:
+
+\begin{equation}
+K_{RBF}(x_i, x_j) = \exp\left(-\gamma \|x_i - x_j\|^2\right)
+\end{equation}
+
+My configuration:
+\begin{itemize}
+    \item RBF kernel (handles non-linear boundaries if they exist)
+    \item C=1.0 for regularization
+    \item Had to enable probability=True for the ensemble to work
+    \item gamma='scale' lets sklearn pick a reasonable value automatically
+    \item Tied with Logistic Regression at 98.25\%
+\end{itemize}
+
+\begin{lstlisting}[style=pythonstyle, caption={SVM Implementation}]
+from sklearn.svm import SVC
+
+svm_model = SVC(
+    kernel="rbf",
+    C=1.0,
+    probability=True,
+    random_state=42
+)
+svm_model.fit(X_train, y_train)
+\end{lstlisting}
+
+\subsubsection{Random Forest Classifier}
+Random Forest is basically a bunch of decision trees voting together:
+
+\begin{equation}
+\hat{y} = \text{mode}\{h_1(x), h_2(x), ..., h_B(x)\}
+\end{equation}
+
+where each $h_b(x)$ is one tree's prediction.
+
+What I configured:
+\begin{itemize}
+    \item 100 trees (n\_estimators=100) -- standard starting point
+    \item Bootstrap sampling for diversity
+    \item No depth limit -- let trees grow fully
+    \item Got 95.61\% accuracy -- decent but not top tier
+\end{itemize}
+
+\begin{lstlisting}[style=pythonstyle, caption={Random Forest Implementation}]
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+rf_model.fit(X_train, y_train)
+\end{lstlisting}
+
+\subsection{Model Training and Optimization}
+
+\subsubsection{Training Process}
+I set up a training pipeline that:
+\begin{enumerate}
+    \item Takes in the preprocessed data from Suryanshi's work
+    \item Initializes each model with the hyperparameters I chose
+    \item Fits each model to training data
+    \item Saves them for evaluation and ensemble combination
+\end{enumerate}
+
+\subsubsection{Hyperparameter Selection}
+I experimented with different settings before settling on these:
+
+\begin{table}[H]
+\centering
+\caption{Final Hyperparameter Configuration}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Model} & \textbf{Parameter} & \textbf{Value} \\ \hline
+\multirow{2}{*}{Logistic Regression} & max\_iter & 5000 \\ \cline{2-3}
+ & C & 1.0 \\ \hline
+\multirow{2}{*}{Decision Tree} & max\_depth & None \\ \cline{2-3}
+ & min\_samples\_split & 2 \\ \hline
+\multirow{3}{*}{SVM} & kernel & RBF \\ \cline{2-3}
+ & C & 1.0 \\ \cline{2-3}
+ & gamma & scale \\ \hline
+\multirow{2}{*}{Random Forest} & n\_estimators & 100 \\ \cline{2-3}
+ & max\_depth & None \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Model Comparison}
+
+Here's how all four models performed:
+
+\begin{table}[H]
+\centering
+\caption{Model Performance Comparison}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\ \hline
+Logistic Regression & 0.9825 & 0.9861 & 0.9861 & 0.9861 & 0.9954 \\ \hline
+SVM & 0.9825 & 0.9861 & 0.9861 & 0.9861 & 0.9950 \\ \hline
+Random Forest & 0.9561 & 0.9589 & 0.9722 & 0.9655 & 0.9939 \\ \hline
+Decision Tree & 0.9123 & 0.9559 & 0.9028 & 0.9286 & 0.9157 \\ \hline
+\end{tabular}
+\end{table}
+
+Interesting findings:
+\begin{itemize}
+    \item Logistic Regression and SVM tied for best -- didn't expect the simplest model to win
+    \item All models except Decision Tree had ROC-AUC above 0.99
+    \item Decision Tree was weakest but gives the most interpretable rules
+    \item Random Forest was middle-of-the-pack -- good but not great
+\end{itemize}
+
+\subsection{Algorithm Analysis}
+
+I spent some time thinking about why the results turned out this way:
+
+\subsubsection{Why Logistic Regression Excelled}
+\begin{itemize}
+    \item Suryanshi's preprocessing (especially scaling) really helped -- linear models love normalized data
+    \item Turns out the classes are pretty linearly separable after all
+    \item The regularization prevented overfitting on our 455 training samples
+\end{itemize}
+
+\subsubsection{Why SVM Performed Well}
+\begin{itemize}
+    \item RBF kernel can find non-linear boundaries, but honestly didn't need to here
+    \item 30 features is a nice sweet spot for SVM -- not too few, not too many
+    \item Margin maximization gives robust classification
+\end{itemize}
+
+\subsubsection{Why Decision Tree Underperformed}
+\begin{itemize}
+    \item Without pruning, it memorized the training data (overfitting)
+    \item Small changes in data lead to completely different trees
+    \item Can't capture smooth boundaries -- everything is axis-aligned splits
+\end{itemize}
+
+%==================== PROJECT OVERVIEW ====================%
+\newpage
+\section{PROJECT OVERVIEW}
+
+\subsection{Problem Statement}
+Our goal was to build a system that distinguishes benign from malignant tumors, provides confidence scores, and explains its decisions. In healthcare, you can't just have a black box -- doctors need to understand and trust the reasoning.
+
+\subsection{System Architecture}
+We organized the project into layers:
+\begin{enumerate}
+    \item \textbf{Data Layer}: Loading and preprocessing
+    \item \textbf{Model Layer}: The classification algorithms (my focus area)
+    \item \textbf{Ensemble Layer}: Soft voting combination
+    \item \textbf{Output Layer}: Metrics and visualizations
+\end{enumerate}
+
+\subsection{Results Achieved}
+Final results were solid:
+\begin{itemize}
+    \item LR and SVM both hit 98.25\% accuracy
+    \item ROC-AUC above 0.99 for the best models
+    \item 98.61\% recall -- catching almost all actual cancer cases
+    \item Cross-validation confirmed these weren't fluke numbers
+\end{itemize}
+
+%==================== TEAM CONTRIBUTIONS ====================%
+\newpage
+\section{TEAM CONTRIBUTIONS}
+
+\subsection{Team Members and Their Roles}
+
+\begin{itemize}
+    \item \textbf{Bhavya Sharma}: Found the dataset and explained the medical stuff
+    \item \textbf{Suryanshi Ranawat}: Data preprocessing and exploratory analysis
+    \item \textbf{Ujjwal Mishra (Me)}: Implemented the ML algorithms
+    \item \textbf{Medhansh Singh Kushwaha}: Built the ensemble and evaluation system
+    \item \textbf{Soumyadeep Chakravarti}: Coordinated everything and wrote it up
+\end{itemize}
+
+\subsection{Collaboration}
+The team worked well together. My models fed directly into Medhansh's ensemble, so we had to coordinate closely on interfaces. Suryanshi's preprocessing made my life easier -- the data came in clean and ready to train on.
+
+%==================== LEARNING OUTCOMES ====================%
+\newpage
+\section{LEARNING OUTCOMES}
+
+Here's what I learned from this project:
+
+\begin{enumerate}
+    \item \textbf{ML Algorithms}: I really understand these classifiers now -- not just how to use them, but the math behind them and when each one makes sense
+    
+    \item \textbf{Model Selection}: Learned that you can't just pick an algorithm randomly -- you need to understand your data and problem
+    
+    \item \textbf{Hyperparameter Tuning}: Got practical experience with what different parameters actually do and how to tune them
+    
+    \item \textbf{scikit-learn}: Way more comfortable with the library now, especially the classifier APIs
+    
+    \item \textbf{Algorithm Analysis}: Learned to think about \textit{why} models perform differently, not just what the numbers are
+    
+    \item \textbf{Healthcare ML}: Understood that in medical applications, you care more about recall (not missing cancer) than pure accuracy
+\end{enumerate}
+
+%==================== CONCLUSION ====================%
+\newpage
+\section{CONCLUSION}
+
+My job on this project was implementing the core ML algorithms -- Logistic Regression, Decision Tree, SVM, and Random Forest. I got to experiment with different configurations and figure out what worked best for our cancer detection problem.
+
+The results were honestly a bit surprising. I expected the more complex methods (SVM, Random Forest) to dominate, but simple Logistic Regression tied for the best performance. It taught me that fancy algorithms aren't always better -- sometimes clean data and a simple model is all you need.
+
+Each algorithm has its place though. Logistic Regression and SVM gave us the best accuracy, but Decision Tree's rules are easy to explain to non-technical people. Random Forest gave decent performance with built-in feature importance. They all contributed something to the final ensemble.
+
+This EPICS project gave me real hands-on experience with ML implementation. It's one thing to learn about algorithms in class -- it's another to actually build them, tune them, and see why they behave the way they do. That practical experience is going to be valuable going forward.
+
+%==================== REFERENCES ====================%
+\newpage
+\section{REFERENCES}
+
+\begin{thebibliography}{99}
+
+\bibitem{cortes1995}
+C. Cortes and V. Vapnik, ``Support-vector networks,'' \textit{Machine Learning}, vol. 20, no. 3, pp. 273--297, 1995.
+
+\bibitem{breiman2001}
+L. Breiman, ``Random Forests,'' \textit{Machine Learning}, vol. 45, no. 1, pp. 5--32, 2001.
+
+\bibitem{pedregosa2011}
+F. Pedregosa et al., ``Scikit-learn: Machine Learning in Python,'' \textit{JMLR}, vol. 12, pp. 2825--2830, 2011. [Online]. Available: \url{https://scikit-learn.org}
+
+\bibitem{bishop2006}
+C. M. Bishop, \textit{Pattern Recognition and Machine Learning}, Springer, 2006.
+
+\bibitem{github2026}
+S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' GitHub, 2026. [Online]. Available: \url{https://github.com/Soumyadeep-Chakravarti/EPICS_Project}
+
+\end{thebibliography}
+
+\end{document}
