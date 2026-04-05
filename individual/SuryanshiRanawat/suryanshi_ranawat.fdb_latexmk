@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774548511.51117 "suryanshi_ranawat.tex" "suryanshi_ranawat.pdf" "suryanshi_ranawat" 1774548512.08437 2
-  "../Assets/VIT_LOGO.png" 0 -1 0 ""
+["pdflatex"] 1774966492.43734 "suryanshi_ranawat.tex" "suryanshi_ranawat.pdf" "suryanshi_ranawat" 1774966492.77942 0
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -113,10 +112,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774158559 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774158607 3636711 7142a5621b9d9641298cfffe1c322dc6 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774158556 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "suryanshi_ranawat.aux" 1774548512.02746 3624 f4cb683e267d8cc3163e851d904d755c "pdflatex"
-  "suryanshi_ranawat.out" 1774548512.02746 4212 28642532d11f41411d4feb60745b7b79 "pdflatex"
-  "suryanshi_ranawat.tex" 1774546198.93347 14030 74d3d42863a4429f8ab9f8e14c4ad7e3 ""
-  "suryanshi_ranawat.toc" 1774548512.02846 2275 01da1045bf1ac0989a638f2278b34a22 "pdflatex"
+  "Assets/VIT_LOGO.png" 1774940529.49227 136897 d1ad601745f545ed454d02c60280320b ""
+  "suryanshi_ranawat.aux" 1774966492.7432 3624 99200245a84aed56ac5d97efa0fce83a "pdflatex"
+  "suryanshi_ranawat.out" 1774966492.74529 4212 28642532d11f41411d4feb60745b7b79 "pdflatex"
+  "suryanshi_ranawat.tex" 1774966490.91983 14027 7bb60e20387c6e9eb53cc1d4a9499a1c ""
+  "suryanshi_ranawat.toc" 1774966492.74529 2275 01da1045bf1ac0989a638f2278b34a22 "pdflatex"
   (generated)
   "suryanshi_ranawat.aux"
   "suryanshi_ranawat.log"

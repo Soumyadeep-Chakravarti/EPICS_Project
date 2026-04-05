@@ -76,7 +76,7 @@
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{../Assets/VIT_LOGO.png}
+        \includegraphics[width=0.5\textwidth]{Assets/VIT_LOGO.png}
     \end{figure}
     
     \vspace{1cm}
@@ -243,21 +243,25 @@ I experimented with different settings before settling on these:
 \begin{table}[H]
 \centering
 \caption{Final Hyperparameter Configuration}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{lll} % Removed vertical lines for a cleaner look
+\toprule
+\textbf{Model} & \textbf{Parameter} & \textbf{Value} \\ 
+\midrule
+\multirow{2}{*}{Logistic Regression} & max\_iter & 5000 \\ 
+                                     & C & 1.0 \\ 
 \hline
-\textbf{Model} & \textbf{Parameter} & \textbf{Value} \\ \hline
-\multirow{2}{*}{Logistic Regression} & max\_iter & 5000 \\ \cline{2-3}
- & C & 1.0 \\ \hline
-\multirow{2}{*}{Decision Tree} & max\_depth & None \\ \cline{2-3}
- & min\_samples\_split & 2 \\ \hline
-\multirow{3}{*}{SVM} & kernel & RBF \\ \cline{2-3}
- & C & 1.0 \\ \cline{2-3}
- & gamma & scale \\ \hline
-\multirow{2}{*}{Random Forest} & n\_estimators & 100 \\ \cline{2-3}
- & max\_depth & None \\ \hline
+\multirow{2}{*}{Decision Tree}       & max\_depth & None \\ 
+                                     & min\_samples\_split & 2 \\ 
+\hline
+\multirow{3}{*}{SVM}                 & kernel & RBF \\ 
+                                     & C & 1.0 \\ 
+                                     & gamma & scale \\ 
+\hline
+\multirow{2}{*}{Random Forest}       & n\_estimators & 100 \\ 
+                                     & max\_depth & None \\ 
+\bottomrule
 \end{tabular}
 \end{table}
-
 \subsection{Model Comparison}
 
 Here's how all four models performed:
@@ -384,7 +388,8 @@ This EPICS project gave me real hands-on experience with ML implementation. It's
 
 %==================== REFERENCES ====================%
 \newpage
-\section{REFERENCES}
+\section*{REFERENCES} % Added asterisk to keep it out of TOC if desired, or leave as \section{REFERENCES}
+\addcontentsline{toc}{section}{REFERENCES}
 
 \begin{thebibliography}{99}
 
@@ -404,5 +409,4 @@ C. M. Bishop, \textit{Pattern Recognition and Machine Learning}, Springer, 2006.
 S. Chakravarti et al., ``EPICS Project: Explainable Breast Cancer Detection,'' GitHub, 2026. [Online]. Available: \url{https://github.com/Soumyadeep-Chakravarti/EPICS_Project}
 
 \end{thebibliography}
-
 \end{document}

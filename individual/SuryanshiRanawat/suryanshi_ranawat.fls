@@ -160,10 +160,11 @@ INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
-INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
+INPUT ./Assets/VIT_LOGO.png
+INPUT ./Assets/VIT_LOGO.png
+INPUT ./Assets/VIT_LOGO.png
+INPUT ./Assets/VIT_LOGO.png
+INPUT ./Assets/VIT_LOGO.png
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
@@ -179,8 +180,6 @@ INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
@@ -229,6 +228,12 @@ INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
+INPUT /usr/local/texlive/2026/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
+INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT suryanshi_ranawat.aux
 INPUT ./suryanshi_ranawat.out
 INPUT ./suryanshi_ranawat.out

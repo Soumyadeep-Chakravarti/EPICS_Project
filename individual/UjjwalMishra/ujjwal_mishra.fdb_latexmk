@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774548512.34928 "ujjwal_mishra.tex" "ujjwal_mishra.pdf" "ujjwal_mishra" 1774548512.98878 2
+["pdflatex"] 1774966765.31715 "ujjwal_mishra.tex" "ujjwal_mishra.pdf" "ujjwal_mishra" 1774966765.72329 2
   "../Assets/VIT_LOGO.png" 0 -1 0 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -132,10 +132,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774158559 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774158607 3636711 7142a5621b9d9641298cfffe1c322dc6 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774158556 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "ujjwal_mishra.aux" 1774548512.91048 4222 aa7b8b528ca0fb194263b6b34244a068 "pdflatex"
-  "ujjwal_mishra.out" 1774548512.91048 4046 94fc4af3c851567caade48520b565fe6 "pdflatex"
-  "ujjwal_mishra.tex" 1774548439.95036 15152 c4bc19dd49b75aa8629cfcc91b98e14e ""
-  "ujjwal_mishra.toc" 1774548512.91048 2177 49d7d04974942f4c0745c8adb56de869 "pdflatex"
+  "Assets/VIT_LOGO.png" 1774940552.68874 136897 d1ad601745f545ed454d02c60280320b ""
+  "ujjwal_mishra.aux" 1774966765.67913 4207 7a3fe534156f8996a18e3c4ba61a78ec "pdflatex"
+  "ujjwal_mishra.out" 1774966765.67949 4046 cc58e2a3e72f35dbde7aa8d07d687764 "pdflatex"
+  "ujjwal_mishra.tex" 1774966765.25686 15482 595cdb449d4c8058ed71025a48e27354 ""
+  "ujjwal_mishra.toc" 1774966765.67966 2162 df5a404b4c022e540ab5ac0991fa2c01 "pdflatex"
   (generated)
   "ujjwal_mishra.aux"
   "ujjwal_mishra.log"

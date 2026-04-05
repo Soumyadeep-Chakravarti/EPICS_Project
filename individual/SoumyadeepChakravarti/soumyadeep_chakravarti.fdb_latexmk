@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774548510.28753 "soumyadeep_chakravarti.tex" "soumyadeep_chakravarti.pdf" "soumyadeep_chakravarti" 1774548511.18603 2
-  "../Assets/VIT_LOGO.png" 0 -1 0 ""
+["pdflatex"] 1774966465.15228 "soumyadeep_chakravarti.tex" "soumyadeep_chakravarti.pdf" "soumyadeep_chakravarti" 1774966465.67424 0
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1136768653 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -194,10 +193,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774158559 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774158607 3636711 7142a5621b9d9641298cfffe1c322dc6 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774158556 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "soumyadeep_chakravarti.aux" 1774548511.10943 4419 0a0a04001d3dd825fe54c71ab3a0137c "pdflatex"
-  "soumyadeep_chakravarti.out" 1774548511.10943 4711 d4eb1d68c8c019812782c8635542b88f "pdflatex"
-  "soumyadeep_chakravarti.tex" 1774546028.21031 18425 b83a5eca7e2affceb744f49c1efbd33a ""
-  "soumyadeep_chakravarti.toc" 1774548511.10943 2610 f9ae469a75ca7b321b335b74b65e6e63 "pdflatex"
+  "Assets/VIT_LOGO.png" 1774940542.39777 136897 d1ad601745f545ed454d02c60280320b ""
+  "soumyadeep_chakravarti.aux" 1774966465.6261 4419 af401e869c59e55329057ad7a4da79e4 "pdflatex"
+  "soumyadeep_chakravarti.out" 1774966465.62665 4711 d4eb1d68c8c019812782c8635542b88f "pdflatex"
+  "soumyadeep_chakravarti.tex" 1774966453.72617 18422 8e16f06f0f3d6f72846fc18a2bb5f805 ""
+  "soumyadeep_chakravarti.toc" 1774966465.62665 2610 f9ae469a75ca7b321b335b74b65e6e63 "pdflatex"
   (generated)
   "soumyadeep_chakravarti.aux"
   "soumyadeep_chakravarti.log"

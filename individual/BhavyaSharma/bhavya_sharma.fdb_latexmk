@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774548507.78427 "bhavya_sharma.tex" "bhavya_sharma.pdf" "bhavya_sharma" 1774548508.39741 2
-  "../Assets/VIT_LOGO.png" 0 -1 0 ""
+["pdflatex"] 1774940721.45742 "bhavya_sharma.tex" "bhavya_sharma.pdf" "bhavya_sharma" 1774940721.89755 0
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -112,10 +111,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774158559 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774158607 3636711 7142a5621b9d9641298cfffe1c322dc6 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774158556 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "bhavya_sharma.aux" 1774548508.33235 3043 87e55bba42d62a771f5c549cd147c4fb "pdflatex"
-  "bhavya_sharma.out" 1774548508.33335 3258 b0456c7fc5733f556202572d1b65cb51 "pdflatex"
-  "bhavya_sharma.tex" 1774545627.16912 13682 881f9a5dc1052e5789b549d87fca4190 ""
-  "bhavya_sharma.toc" 1774548508.33335 1761 e8e5205fbcfffcdd44e7bf6c84c8cd26 "pdflatex"
+  "Assets/VIT_LOGO.png" 1774940514.39579 136897 d1ad601745f545ed454d02c60280320b ""
+  "bhavya_sharma.aux" 1774940721.85165 3043 7510bba5df94f74ed05cb8b4e2141c3d "pdflatex"
+  "bhavya_sharma.out" 1774940721.85323 3258 b0456c7fc5733f556202572d1b65cb51 "pdflatex"
+  "bhavya_sharma.tex" 1774940720.31232 13679 cd1e23c979d1392ac56418c1639e4ec9 ""
+  "bhavya_sharma.toc" 1774940721.85323 1761 e8e5205fbcfffcdd44e7bf6c84c8cd26 "pdflatex"
   (generated)
   "bhavya_sharma.aux"
   "bhavya_sharma.log"

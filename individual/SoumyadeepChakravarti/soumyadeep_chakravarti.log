@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  26 MAR 2026 18:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  31 MAR 2026 14:14
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **soumyadeep_chakravarti.tex
 (./soumyadeep_chakravarti.tex
@@ -876,32 +877,17 @@ Package hyperref Info: Link coloring OFF on input line 51.
 \@outlinefile=\write4
 \openout4 = `soumyadeep_chakravarti.out'.
 
-
-
-LaTeX Warning: File `../Assets/VIT_LOGO.png' not found on input line 81.
-
-
-! Package pdftex.def Error: File `../Assets/VIT_LOGO.png' not found: using draf
-t setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 ...dth=0.5\textwidth]{../Assets/VIT_LOGO.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 8
-1.
-(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1
+<Assets/VIT_LOGO.png, id=127, 181.989pt x 71.9415pt>
+File: Assets/VIT_LOGO.png Graphic file (type png)
+<use Assets/VIT_LOGO.png>
+Package pdftex.def Info: Assets/VIT_LOGO.png  used on input line 81.
+(pdftex.def)             Requested size: 226.48395pt x 89.53255pt.
+ [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [1]
-(./soumyadeep_chakravarti.toc
+al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc} <./Assets/VIT_LOGO.png 
+(PNG copy)>]
+[1] (./soumyadeep_chakravarti.toc
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
@@ -942,16 +928,15 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 230.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
+30.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 231.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.242     ensemble.
-                   fit(X_train, y_train) [2] [3] [4] [5] [6] [7] [8] [9]
-[10] (./soumyadeep_chakravarti.aux)
+ [2] [3]
+[4] [5] [6] [7] [8] [9] [10] (./soumyadeep_chakravarti.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -961,23 +946,23 @@ Package rerunfilecheck Info: File `soumyadeep_chakravarti.out' has not changed.
 (rerunfilecheck)             Checksum: D4EB1D68C8C019812782C8635542B88F;4711.
  ) 
 Here is how much of TeX's memory you used:
- 28405 strings out of 467525
- 519462 string characters out of 5418988
- 1180723 words of memory out of 5000000
- 56589 multiletter control sequences out of 15000+600000
+ 28382 strings out of 467525
+ 518679 string characters out of 5418988
+ 1181679 words of memory out of 5000000
+ 56566 multiletter control sequences out of 15000+600000
  661925 words of font info for 208 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,104p,1019b,2200s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,11n,104p,1019b,2201s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/
 local/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/te
 xlive/2026/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2
 026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026/texmf-
 dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on soumyadeep_chakravarti.pdf (14 pages, 108478 bytes).
+Output written on soumyadeep_chakravarti.pdf (13 pages, 244109 bytes).
 PDF statistics:
- 317 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
+ 315 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
  83 named destinations out of 1000 (max. 500000)
- 59133 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 59138 words of extra memory for PDF output out of 61914 (max. 10000000)
 

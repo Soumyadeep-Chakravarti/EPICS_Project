@@ -1,0 +1,53 @@
+==================================================
+MODEL EVALUATION RESULTS
+==================================================
+
+Logistic Regression
+-------------------
+  Accuracy:  0.9825
+  Precision: 0.9861
+  Recall:    0.9861
+  F1 Score:  0.9861
+  ROC-AUC:   0.9954
+
+Decision Tree
+-------------
+  Accuracy:  0.9123
+  Precision: 0.9559
+  Recall:    0.9028
+  F1 Score:  0.9286
+  ROC-AUC:   0.9157
+
+SVM
+---
+  Accuracy:  0.9825
+  Precision: 0.9861
+  Recall:    0.9861
+  F1 Score:  0.9861
+  ROC-AUC:   0.9950
+
+Random Forest
+-------------
+  Accuracy:  0.9561
+  Precision: 0.9589
+  Recall:    0.9722
+  F1 Score:  0.9655
+  ROC-AUC:   0.9939
+
+Ensemble
+--------
+  Accuracy:  0.9737
+  Precision: 0.9726
+  Recall:    0.9861
+  F1 Score:  0.9793
+  ROC-AUC:   0.9954
+
+==================================================
+CROSS-VALIDATION RESULTS (5-Fold)
+==================================================
+
+Logistic Regression: 0.9802 (+/- 0.0128)
+Decision Tree: 0.9099 (+/- 0.0189)
+SVM: 0.9714 (+/- 0.0179)
+Random Forest: 0.9538 (+/- 0.0235)
+Ensemble: 0.9692 (+/- 0.0176)

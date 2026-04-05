@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  26 MAR 2026 18:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  31 MAR 2026 14:19
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **ujjwal_mishra.tex
 (./ujjwal_mishra.tex
@@ -590,32 +591,17 @@ Package hyperref Info: Link coloring OFF on input line 49.
 \@outlinefile=\write3
 \openout3 = `ujjwal_mishra.out'.
 
-
-
-LaTeX Warning: File `../Assets/VIT_LOGO.png' not found on input line 79.
-
-
-! Package pdftex.def Error: File `../Assets/VIT_LOGO.png' not found: using draf
-t setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.79 ...dth=0.5\textwidth]{../Assets/VIT_LOGO.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
-9.
-(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1
+<Assets/VIT_LOGO.png, id=103, 181.989pt x 71.9415pt>
+File: Assets/VIT_LOGO.png Graphic file (type png)
+<use Assets/VIT_LOGO.png>
+Package pdftex.def Info: Assets/VIT_LOGO.png  used on input line 79.
+(pdftex.def)             Requested size: 226.48395pt x 89.53255pt.
+ [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [1] (./ujjwal_mish
-ra.toc
+al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc} <./Assets/VIT_LOGO.png 
+(PNG copy)>] [1]
+(./ujjwal_mishra.toc
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
@@ -651,57 +637,56 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 152.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+52.
 
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.177 \begin{equation}
-                       [1]
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.226 rf_model.
-               fit(X_train, y_train) [2]
-! Undefined control sequence.
+                       [1] [2]
+./ujjwal_mishra.tex:250: Undefined control sequence.
 <recently read> \multirow 
                           
-l.249 \multirow
-               {2}{*}{Logistic Regression} & max\_iter & 5000 \\ \cline{2-3}
+l.250 \multirow
+               {2}{*}{Logistic Regression} & max\_iter & 5000 \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.251 \multirow
-               {2}{*}{Decision Tree} & max\_depth & None \\ \cline{2-3}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
+./ujjwal_mishra.tex:253: Undefined control sequence.
 <recently read> \multirow 
                           
 l.253 \multirow
-               {3}{*}{SVM} & kernel & RBF \\ \cline{2-3}
+               {2}{*}{Decision Tree}       & max\_depth & None \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
+./ujjwal_mishra.tex:256: Undefined control sequence.
 <recently read> \multirow 
                           
 l.256 \multirow
-               {2}{*}{Random Forest} & n\_estimators & 100 \\ \cline{2-3}
+               {3}{*}{SVM}                 & kernel & RBF \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./ujjwal_mishra.tex:260: Undefined control sequence.
+<recently read> \multirow 
+                          
+l.260 \multirow
+               {2}{*}{Random Forest}       & n\_estimators & 100 \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -714,13 +699,13 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `ujjwal_mishra.out' has not changed.
-(rerunfilecheck)             Checksum: 94FC4AF3C851567CAADE48520B565FE6;4046.
+(rerunfilecheck)             Checksum: CC58E2A3E72F35DBDE7AA8D07D687764;4046.
  ) 
 Here is how much of TeX's memory you used:
- 17623 strings out of 467525
- 273907 string characters out of 5418988
- 944844 words of memory out of 5000000
- 46057 multiletter control sequences out of 15000+600000
+ 17598 strings out of 467525
+ 273104 string characters out of 5418988
+ 944800 words of memory out of 5000000
+ 46033 multiletter control sequences out of 15000+600000
  658829 words of font info for 181 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,9n,79p,1010b,2069s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -737,10 +722,10 @@ texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/
 mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on ujjwal_mishra.pdf (13 pages, 167625 bytes).
+Output written on ujjwal_mishra.pdf (12 pages, 303440 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 285 compressed objects within 3 object streams
- 89 named destinations out of 1000 (max. 500000)
- 56521 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 325 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 56526 words of extra memory for PDF output out of 61914 (max. 10000000)
 

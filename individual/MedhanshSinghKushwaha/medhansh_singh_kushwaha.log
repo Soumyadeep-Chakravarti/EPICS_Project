@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  26 MAR 2026 18:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  31 MAR 2026 14:13
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **medhansh_singh_kushwaha.tex
 (./medhansh_singh_kushwaha.tex
@@ -597,32 +598,17 @@ Package hyperref Info: Link coloring OFF on input line 53.
 \@outlinefile=\write3
 \openout3 = `medhansh_singh_kushwaha.out'.
 
-
-
-LaTeX Warning: File `../Assets/VIT_LOGO.png' not found on input line 83.
-
-
-! Package pdftex.def Error: File `../Assets/VIT_LOGO.png' not found: using draf
-t setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.83 ...dth=0.5\textwidth]{../Assets/VIT_LOGO.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 8
-3.
-(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1
+<Assets/VIT_LOGO.png, id=116, 181.989pt x 71.9415pt>
+File: Assets/VIT_LOGO.png Graphic file (type png)
+<use Assets/VIT_LOGO.png>
+Package pdftex.def Info: Assets/VIT_LOGO.png  used on input line 83.
+(pdftex.def)             Requested size: 226.48395pt x 89.53255pt.
+ [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [1]
-(./medhansh_singh_kushwaha.toc
+al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc} <./Assets/VIT_LOGO.png 
+(PNG copy)>]
+[1] (./medhansh_singh_kushwaha.toc
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
@@ -652,6 +638,12 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 148.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+48.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 156.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
@@ -668,14 +660,7 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.190 
-       [1]
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.221 \begin{equation}
-                       [2] [3] [4] [5] [6] [7] [8] [9]
-(./medhansh_singh_kushwaha.aux)
+       [1] [2] [3] [4] [5] [6] [7] [8] [9] (./medhansh_singh_kushwaha.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -685,13 +670,13 @@ Package rerunfilecheck Info: File `medhansh_singh_kushwaha.out' has not changed
 (rerunfilecheck)             Checksum: 17F9077C7254FE05DC6636B311A7D3FE;4477.
  ) 
 Here is how much of TeX's memory you used:
- 17736 strings out of 467525
- 276186 string characters out of 5418988
- 961307 words of memory out of 5000000
- 46163 multiletter control sequences out of 15000+600000
+ 17713 strings out of 467525
+ 275403 string characters out of 5418988
+ 961263 words of memory out of 5000000
+ 46140 multiletter control sequences out of 15000+600000
  660833 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1020b,1430s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1020b,1431s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -706,10 +691,10 @@ xlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/u
 rw/times/utmri8a.pfb>
-Output written on medhansh_singh_kushwaha.pdf (13 pages, 177982 bytes).
+Output written on medhansh_singh_kushwaha.pdf (12 pages, 313706 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 301 compressed objects within 4 object streams
+ 344 PDF objects out of 1000 (max. 8388607)
+ 298 compressed objects within 3 object streams
  90 named destinations out of 1000 (max. 500000)
- 61153 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 61158 words of extra memory for PDF output out of 61914 (max. 10000000)
 

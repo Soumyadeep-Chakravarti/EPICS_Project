@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774548509.0348 "medhansh_singh_kushwaha.tex" "medhansh_singh_kushwaha.pdf" "medhansh_singh_kushwaha" 1774548509.71259 2
-  "../Assets/VIT_LOGO.png" 0 -1 0 ""
+["pdflatex"] 1774966427.50478 "medhansh_singh_kushwaha.tex" "medhansh_singh_kushwaha.pdf" "medhansh_singh_kushwaha" 1774966427.91431 0
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1136768653 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -137,10 +136,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774158559 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774158607 3636711 7142a5621b9d9641298cfffe1c322dc6 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774158556 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "medhansh_singh_kushwaha.aux" 1774548509.64439 4755 54c0d6e6aa4a998219c36432dc825204 "pdflatex"
-  "medhansh_singh_kushwaha.out" 1774548509.64539 4477 17f9077c7254fe05dc6636b311a7d3fe "pdflatex"
-  "medhansh_singh_kushwaha.tex" 1774545813.71457 16227 73a020df215832626d116700ac155ab3 ""
-  "medhansh_singh_kushwaha.toc" 1774548509.64539 2443 d7ce4dd9869b906f71920dd9453b9971 "pdflatex"
+  "Assets/VIT_LOGO.png" 1774940563.99541 136897 d1ad601745f545ed454d02c60280320b ""
+  "medhansh_singh_kushwaha.aux" 1774966427.86903 4755 72ad545a6fdb4848a59698aeef9ae8b0 "pdflatex"
+  "medhansh_singh_kushwaha.out" 1774966427.87027 4477 17f9077c7254fe05dc6636b311a7d3fe "pdflatex"
+  "medhansh_singh_kushwaha.tex" 1774966425.67303 16224 793ffe51e44142cdf4765c50cc01d6f8 ""
+  "medhansh_singh_kushwaha.toc" 1774966427.87027 2443 d7ce4dd9869b906f71920dd9453b9971 "pdflatex"
   (generated)
   "medhansh_singh_kushwaha.aux"
   "medhansh_singh_kushwaha.log"

@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  26 MAR 2026 18:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  31 MAR 2026 07:05
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **bhavya_sharma.tex
 (./bhavya_sharma.tex
@@ -506,32 +507,17 @@ Package hyperref Info: Link coloring OFF on input line 29.
 \@outlinefile=\write3
 \openout3 = `bhavya_sharma.out'.
 
-
-
-LaTeX Warning: File `../Assets/VIT_LOGO.png' not found on input line 59.
-
-
-! Package pdftex.def Error: File `../Assets/VIT_LOGO.png' not found: using draf
-t setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.59 ...dth=0.5\textwidth]{../Assets/VIT_LOGO.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-9.
-(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1
+<Assets/VIT_LOGO.png, id=88, 181.989pt x 71.9415pt>
+File: Assets/VIT_LOGO.png Graphic file (type png)
+<use Assets/VIT_LOGO.png>
+Package pdftex.def Info: Assets/VIT_LOGO.png  used on input line 59.
+(pdftex.def)             Requested size: 226.48395pt x 89.53255pt.
+ [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [1] (./bhavya_shar
-ma.toc
+al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc} <./Assets/VIT_LOGO.png 
+(PNG copy)>] [1]
+(./bhavya_sharma.toc
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
@@ -568,13 +554,14 @@ been already used, duplicate ignored
                    \relax 
 l.142     \item \textbf
                        {Smoothness}: How much the radius varies around the cell
-[1]
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.191 \end{itemize}
-                    [2] [3] [4] [5] [6] [7] [8] (./bhavya_sharma.aux)
+[1] [2] [3] [4] [5] [6] [7]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
+79.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [8]
+(./bhavya_sharma.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -583,10 +570,10 @@ Package rerunfilecheck Info: File `bhavya_sharma.out' has not changed.
 (rerunfilecheck)             Checksum: B0456C7FC5733F556202572D1B65CB51;3258.
  ) 
 Here is how much of TeX's memory you used:
- 14728 strings out of 467525
- 233410 string characters out of 5418988
+ 14705 strings out of 467525
+ 232627 string characters out of 5418988
  679862 words of memory out of 5000000
- 43249 multiletter control sequences out of 15000+600000
+ 43226 multiletter control sequences out of 15000+600000
  655056 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,1010b,581s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -598,10 +585,10 @@ local/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/te
 xlive/2026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026
 /texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bhavya_sharma.pdf (12 pages, 114501 bytes).
+Output written on bhavya_sharma.pdf (11 pages, 250320 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
+ 240 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
  48 named destinations out of 1000 (max. 500000)
- 47273 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 47278 words of extra memory for PDF output out of 51595 (max. 10000000)
 
